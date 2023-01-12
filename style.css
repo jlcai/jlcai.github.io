@@ -59,7 +59,7 @@ input,select{vertical-align:middle}
     height: 28px;
 }
 .activeWindow .windowHeader {
-    background-color: rgb(0,1,129);
+    background-color: #000081a9;
 }
 .windowHeader > span {
     display: inline-block;
