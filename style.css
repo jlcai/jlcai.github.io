@@ -51,7 +51,7 @@ input,select{vertical-align:middle}
 	display: none;
 }
 .windowHeader {
-    background-color: #00008194;
+    background-color: #0000813d;
     text-align: right;
     border-bottom: 2px solid #000000;
     padding: 2px;
@@ -59,7 +59,7 @@ input,select{vertical-align:middle}
     height: 28px;
 }
 .activeWindow .windowHeader {
-    background-color: #000081a9;
+    background-color: #00008194;
 }
 .windowHeader > span {
     display: inline-block;
