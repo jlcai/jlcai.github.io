@@ -1,7 +1,27 @@
 body {
     background-color: rgb(56, 63, 60);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    font-family: Consolas, monospace;
+}
+
+a:link, a:visited {
+    color:rgb(128, 186, 161);
+}
+
+a:hover {
+    color:rgb(78, 129, 107);
 }
 
 #intro {
+    width: 50%;
+    height: 50%;
+    /* top: 50%; */
+    /* left: 50%; */
+    /* background-color: brown; */
+    /* transform: translate(-50%, -50%); */
+    /* align-items: ; */
     color: white;
 }
