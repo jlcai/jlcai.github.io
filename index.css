@@ -15,8 +15,9 @@ a:hover {
     color:rgb(78, 129, 107);
 }
 
-#intro {
+#box {
     width: 50%;
     height: 50%;
+    position: relative;
     color: white;
 }
