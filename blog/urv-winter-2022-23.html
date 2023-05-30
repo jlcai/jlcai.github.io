@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>s3gfault | bp3: undergraduate research volunteer (urv) program :: winter 2022/23</title>
-    <meta name="description" content="bp2: hacknet">
+    <meta name="description" content="bp3: undergraduate research volunteer (urv) program :: winter 2022/23">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -67,8 +67,29 @@
             <li><a href="http://www.cs.utoronto.ca/~erdogdu/papers/priv_aaai.pdf">Privacy-utility trade-off for time-series with application to smart-meter data</a></li>
             </ul>
         
+            <br><br>
+            <h2 id="week2-generate-research-questions-hypotheses-and-metrics-for-evaluation">week2: generate research questions, hypotheses, and metrics for evaluation</h2>
+            <p>For week 2, we focused more on generating our research questions and how to evaluate our results (when we get results). Our PhD mentor taught us about various types of machine learning models as well as ways to reconstruct data. We learned about <strong>split learning</strong> and <strong>autoencoders</strong>. </p>
+            <h3 id="context--topics">context &amp; topics</h3>
+            <p><strong>Split learning</strong> refers to having multiple layers in the data. The goal behind them is to run part of the neural network on the device, send this layer to the edge, and the edge can continue from here and train/run the rest of the model.</p>
+            <p><strong>Autoencoders</strong> are a way to manipulate data and come up with some different version of it by taking input, compactifying it, and reconstructing it in some other format.</p>
+            <img src="../images/autoencoder.png" alt="autoencoders">
+            <a href="https://medium.com/@birla.deepak26/autoencoders-76bb49ae6a8f">Basics of Autoencoders. Autoencoders (AE) are type of… | by Deepak Birla | Medium</a></p>
+            <h3 id="generating-hypotheses">generating hypotheses</h3>
+            <p><strong>coming up with ways to disprove it</strong></p>
+            <p>Usually we do empirical evaluations, which means we evaluate based off observed behavior in experiments. In this case, we take our data set <a href="https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones#">UCI Machine Learning Repository: Human Activity Recognition Using Smartphones Data Set</a>, run the model on it, and look to see how it evaluates. In our case, in terms of how to evaluate, we want to see how much leakage there is before versus after running the model on it. We are trying to protect raw data, so some metric we could use is data distribution (i.e. what the raw versus transformed data looks like when plotted), and accuracy (how close the transformed data is to the raw).</p>
+            <p>After we talked about potential research questions, hypotheses, and metrics of evaluation, we wrote all our findings in our research journal. I read a lot about <strong>differential privacy</strong> during my literature review, so most of my questions regarded if various noise-addition methods would maintain differential privacy, with my metric of evaluation being sensitivity. Differential privacy is a way to share information about a dataset while still withholding information about the individual data the dataset is comprised of. <strong>Sensitivity</strong>, or the maximum difference between outputs, of differential privacy is to be minimized in order for it to be more difficult for adversaries to get information.</p>
             
-        
+            <br><br>
+            <h2 id="week3-implement-baseline-method">week3: implement baseline method</h2>
+            <p>The method we wanted to implement is called LSTM-SPLIT. LSTM stands for <strong>long-short term memory</strong>, which is a type of recurrent neural network (RNN) that is effective in processing time-series data. It deals with the vanishing and exploding gradient problem when training RNNs, and can process point data as well as sequential data without relation to points in previous steps.</p>
+            <br>
+            <object data="../files/lstmsplit_notes.pdf" type="application/pdf" width="100%" height="700vh">
+                <p>Unable to display PDF file. <a href="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf">Download</a> instead.</p>
+            </object>
+            
+            <br><br>
+            <h2>our poster :)</h2>
         </div>
 
         <img src="../images/urvposter.JPG" alt="poster">

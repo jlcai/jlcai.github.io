@@ -7,7 +7,7 @@ body {
     font-family: Consolas, monospace;
 }
 
-a:link, a:visited, b {
+a:link, a:visited, b, strong {
     color:rgb(128, 186, 161);
 }
 

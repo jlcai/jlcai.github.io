@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(56, 63, 60);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100vh;
+    font-family: Consolas, monospace;
+}
+
+
+a:link, a:visited, b {
+    color:rgb(128, 186, 161);
+}
+
+a:hover {
+    color:rgb(78, 129, 107);
+}
