@@ -21,4 +21,12 @@ a:hover {
     padding-top: 35%;
     padding-bottom: 35%;
     color: white;
+    display: block;
+}
+
+h5 {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: normal;
 }
