@@ -3,7 +3,7 @@ body {
     align-items: center;
     justify-content: center;
     display: flex;
-    height: 100vh;
+    height: 100%;
     font-family: Consolas, monospace;
 }
 
@@ -15,13 +15,56 @@ a:hover {
     color:rgb(78, 129, 107);
 }
 
+a {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.wrapper {
+    /*This part is important for centering*/
+    display: grid;
+    place-items: left;
+  }
+  
+  #typing-demo-1 {
+    width: 16ch;
+    animation: typing 3s steps(16), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: x-large;
+  }
+
+  #typing-demo-2 {
+    width: 6ch;
+    animation: typing 1s steps(6), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: x-large;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+
 #intro {
     width: 65%;
     height: 65%;
-    padding-top: 35%;
-    padding-bottom: 35%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     color: white;
-    display: block;
+    position: relative;
 }
 
 h5 {
