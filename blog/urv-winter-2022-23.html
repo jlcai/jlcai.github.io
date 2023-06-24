@@ -11,92 +11,139 @@
 </head>
 
 <body>
-    <div id="intro">
-        <h3 style="color:rgb(128, 186, 161)">blogpost #3 | <a href="https://s3gfault.dev/">back to main page</a></h3>         
-        <h2 style="color: white">undergraduate research volunteer (urv) program :: winter 2022/23</h2>
-        <br><br>        
-        <!-- directives:[] -->
-        <div id="content"><h2 id="hello-">introduction, what is URV, & kick-off meeting</h2>
-            <p>Here's a post about the Undergraduate Research Volunteer (URV) program that CICS held during winter session of 2022/23. This was my first research experience, so I wanted to summarize what I did throughout the weeks of the program in this post. The <a href="https://www.cics.umass.edu/careers/articles/urv">Undergraduate Research Volunteer (URV) program</a> is an opportunity that the UMass College of Information and Computer Science provides to undergraduate students in the college to explore some sort of research under the guidance of a PhD mentor. The topics generally were under machine learning, data science, natural language processing, data collection and statistical analysis, etc.</p>
-            <p>I got into the program and attended the kick-off meeting/information session at the very beginning of winter session. The program itself is 6.5 weeks long, began December 20 2022, and ends February 3 2023. We learned that only 35 applicants were selected out of the 88 who applied. My group consisted of three members other than myself and our PhD mentor.</p>
-            <br><br>
-            <h2 id="week1-introduction-proposed-project--literature-review">week1: introduction, proposed project, &amp; literature review</h2>
-            <h3 id="introduction">introduction</h3>
-            <p>We met with our group and our PhD mentor gave us a general overview of what her personal research deals with, what our project proposal would be, and what would be expected from us in the next few weeks. </p>
+    <main>
+        <div class="intro">
+            <div class="begin">
+                <h3 style="color:rgb(128, 186, 161)">blogpost #3 | <a href="https://s3gfault.dev/">back to main page</a></h3>         
+                <h2 style="color: white">undergraduate research volunteer (urv) program :: winter 2022/23</h2>
+            </div>
+
             <br>
-            <h3 id="proposed-project">proposed project</h3>
-            <p>Our project proposal was on <b>enabling trust on untrusted edges/edge nodes</b>. Most mobile applications are distributed, which means that the components of the application are split across different aspects:</p>
-            <ul>
-            <li>front-end</li>
-            <li>back-end</li>
-            <li>and edge nodes</li>
-            </ul>
-            <p>The front-end could be hosted on the device itself, and the back-end could be hosted on some cloud/big data center for large applications or some server/database for smaller applications. <b>Edge nodes</b>, or edge computing, are smaller servers located near the end device. "Edge" could mean some edge device or some mini cloud or cluster that is near your location. Our research focused on the latter definition of edge here.</p>
-            <p>Most, if not all, applications use context-aware data processing where they store temporal, spatial, personal, etc. data such as geolocation. Because of these context-aware applications, they tend to use machine learning for specific tasks (i.e. using machine learning with user data to either train the ML model or to get some inference with an existing model to give recommendations/predictions for you -- aka predictive analytics). To train these models, we need to get data from many users, train some general model, and recognize patterns that the user showcases every time the applications provides some service to a user. The ML model can output according to these patterns. The traditional method of training these types of ML models is via various queries to the cloud which happens on the device (i.e. facial recognition trains on the device itself since it's a smaller model of just one user's data).</p>
-            <p>That is the context behind our problem statement. Our problem is that since there are models that are trained on the cloud and clouds tend to be far away, we need the user to make queries to edge providers instead of the cloud directly. Users may trust big cloud providers such as Meta, but they may not necessarily trust third-party edge provider companies that they have to send their data to. This problem statement sounds like it could be solved with some sort of encryption, but by the time of the proposal of this project, encryption has not made enough progress to provide security to these sorts of issues.</p>
-            <br>
-            <img src="../images/edgenode.png" alt="edge node">
-            <br>
-            <p>Our proposed work was to modify the data that users send in a way to <b>preserve privacy</b>, allow for ML models to use that data instead of the raw data, and allow edge nodes to have access to the ML model but not the raw information.</p>
-            <br>
-            <h3 id="literature-review">literature review</h3>
-            <p>I never did research before and neither did any of the other two group mates. Our PhD mentor explained to us <b>what a literature review was:</b> a comprehensive summary and deep-dive into previous research on the topics of note for our own research. She taught us the followings tips and tricks on how to conduct a successful literature review:</p>
-            <p><strong>Never read a paper linearly!</strong> </p>
-            <ol>
-            <li>read the title</li>
-            <li>read the abstract</li>
-            <li>read a little bit of the introduction: try to get some higher-level idea, the author will present what they're doing in the paper near the end of the introduction</li>
-            <li>read related work section: to find additional papers on similar subjects</li>
-            <li>read the conclusion: to find what the take-away is</li>
-            <li>read the figures: captions help, diagrams usually explain their methodology</li>
-            <li>decide if you want to continue reading this paper more in-depth</li>
-            </ol>
-            <p><strong>Google Scholar</strong></p>
-            <ul>
-            <li>type in keywords that are relevant</li>
-            </ul>
-            <p>After our meeting to learn about the project proposal and to learn what a literature review was, I spent the next 7 days researching to find papers that were close to what we were researching. Specifically, we were looking for papers that talked about how to allow users to modify data to be privacy preserving and how to enable ML models to use modified data on the edge (this should preserve utility so original data cannot be inverted or reconstructed). After finding each paper, I annotated them and added a quick summary for each one of topical content in our research notebook.</p>
-            <p>Here are some of the papers that I found:</p>
-            <ul>
-            <li><a href="https://arxiv.org/pdf/1911.05996.pdf">Privacy and Utility Preserving Sensor-Data Transformations</a></li>
-            <li><a href="https://arxiv.org/pdf/1710.09549.pdf">Context-Aware Generative Adversarial Privacy</a></li>
-            <li><a href="https://arxiv.org/pdf/1511.05897.pdf">Censoring Representations with an Adversary</a></li>
-            <li><a href="https://arxiv.org/abs/1412.0008">ScreenAvoider: Protecting Computer Screens from Ubiquitous Cameras</a></li>
-            <li><a href="https://arxiv.org/pdf/1802.03151.pdf">Deep Private-Feature Extraction</a></li>
-            <li><a href="https://arxiv.org/pdf/2205.06641.pdf">Privacy-Preserving Release of Mobile Sensor Data</a></li>
-            <li><a href="http://www.cs.utoronto.ca/~erdogdu/papers/priv_aaai.pdf">Privacy-utility trade-off for time-series with application to smart-meter data</a></li>
-            </ul>
-        
-            <br><br>
-            <h2 id="week2-generate-research-questions-hypotheses-and-metrics-for-evaluation">week2: generate research questions, hypotheses, and metrics for evaluation</h2>
-            <p>For week 2, we focused more on generating our research questions and how to evaluate our results (when we get results). Our PhD mentor taught us about various types of machine learning models as well as ways to reconstruct data. We learned about <strong>split learning</strong> and <strong>autoencoders</strong>. </p>
-            <h3 id="context--topics">context &amp; topics</h3>
-            <p><strong>Split learning</strong> refers to having multiple layers in the data. The goal behind them is to run part of the neural network on the device, send this layer to the edge, and the edge can continue from here and train/run the rest of the model.</p>
-            <p><strong>Autoencoders</strong> are a way to manipulate data and come up with some different version of it by taking input, compactifying it, and reconstructing it in some other format.</p>
-            <img src="../images/autoencoder.png" alt="autoencoders">
-            <a href="https://medium.com/@birla.deepak26/autoencoders-76bb49ae6a8f">Basics of Autoencoders. Autoencoders (AE) are type of… | by Deepak Birla | Medium</a></p>
-            <h3 id="generating-hypotheses">generating hypotheses</h3>
-            <p><strong>coming up with ways to disprove it</strong></p>
-            <p>Usually we do empirical evaluations, which means we evaluate based off observed behavior in experiments. In this case, we take our data set <a href="https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones#">UCI Machine Learning Repository: Human Activity Recognition Using Smartphones Data Set</a>, run the model on it, and look to see how it evaluates. In our case, in terms of how to evaluate, we want to see how much leakage there is before versus after running the model on it. We are trying to protect raw data, so some metric we could use is data distribution (i.e. what the raw versus transformed data looks like when plotted), and accuracy (how close the transformed data is to the raw).</p>
-            <p>After we talked about potential research questions, hypotheses, and metrics of evaluation, we wrote all our findings in our research journal. I read a lot about <strong>differential privacy</strong> during my literature review, so most of my questions regarded if various noise-addition methods would maintain differential privacy, with my metric of evaluation being sensitivity. Differential privacy is a way to share information about a dataset while still withholding information about the individual data the dataset is comprised of. <strong>Sensitivity</strong>, or the maximum difference between outputs, of differential privacy is to be minimized in order for it to be more difficult for adversaries to get information.</p>
             
+            <section id="introduction">
+                <h2>introduction, what is URV, & kick-off meeting</h2>
+                <p>Here's a post about the Undergraduate Research Volunteer (URV) program that CICS held during winter session of 2022/23. This was my first research experience, so I wanted to summarize what I did throughout the weeks of the program in this post. The <a href="https://www.cics.umass.edu/careers/articles/urv">Undergraduate Research Volunteer (URV) program</a> is an opportunity that the UMass College of Information and Computer Science provides to undergraduate students in the college to explore some sort of research under the guidance of a PhD mentor. The topics generally were under machine learning, data science, natural language processing, data collection and statistical analysis, etc.</p>
+                <p>I got into the program and attended the kick-off meeting/information session at the very beginning of winter session. The program itself is 6.5 weeks long, began December 20 2022, and ends February 3 2023. We learned that only 35 applicants were selected out of the 88 who applied. My group consisted of three members other than myself and our PhD mentor.</p>
             <br><br>
-            <h2 id="week3-implement-baseline-method">week3: implement baseline method</h2>
-            <p>The method we wanted to implement is called LSTM-SPLIT. LSTM stands for <strong>long-short term memory</strong>, which is a type of recurrent neural network (RNN) that is effective in processing time-series data. It deals with the vanishing and exploding gradient problem when training RNNs, and can process point data as well as sequential data without relation to points in previous steps.</p>
-            <br>
-            <object data="../files/lstmsplit_notes.pdf" type="application/pdf" width="100%" height="700vh">
-                <p>Unable to display PDF file. <a href="/uploads/media/default/0001/01/540cb75550adf33f281f29132dddd14fded85bfc.pdf">Download</a> instead.</p>
-            </object>
-            
-            <br><br>
-            <h2>our poster :)</h2>
+            </section>
+            <section id="week1">
+                <h2>week1: proposed project &amp; literature review</h2>
+                
+                <section id="week1--intro">
+                    <h3>program intro</h3>
+                    <p>We met with our group and our PhD mentor gave us a general overview of what her personal research deals with, what our project proposal would be, and what would be expected from us in the next few weeks.</p>
+                </section>
+
+                <section id="week1--proposed-proj">
+                    <h3>proposed project</h3>
+                    <p>Our project proposal was on <b>enabling trust on untrusted edges/edge nodes</b>. Most mobile applications are distributed, which means that the components of the application are split across different aspects:</p>
+                    <ul>
+                    <li>front-end</li>
+                    <li>back-end</li>
+                    <li>and edge nodes</li>
+                    </ul>
+                    <p>The front-end could be hosted on the device itself, and the back-end could be hosted on some cloud/big data center for large applications or some server/database for smaller applications. <b>Edge nodes</b>, or edge computing, are smaller servers located near the end device. "Edge" could mean some edge device or some mini cloud or cluster that is near your location. Our research focused on the latter definition of edge here.</p>
+                    <p>Most, if not all, applications use context-aware data processing where they store temporal, spatial, personal, etc. data such as geolocation. Because of these context-aware applications, they tend to use machine learning for specific tasks (i.e. using machine learning with user data to either train the ML model or to get some inference with an existing model to give recommendations/predictions for you -- aka predictive analytics). To train these models, we need to get data from many users, train some general model, and recognize patterns that the user showcases every time the applications provides some service to a user. The ML model can output according to these patterns. The traditional method of training these types of ML models is via various queries to the cloud which happens on the device (i.e. facial recognition trains on the device itself since it's a smaller model of just one user's data).</p>
+                    <p>That is the context behind our problem statement. Our problem is that since there are models that are trained on the cloud and clouds tend to be far away, we need the user to make queries to edge providers instead of the cloud directly. Users may trust big cloud providers such as Meta, but they may not necessarily trust third-party edge provider companies that they have to send their data to. This problem statement sounds like it could be solved with some sort of encryption, but by the time of the proposal of this project, encryption has not made enough progress to provide security to these sorts of issues.</p>
+                    <br>
+                    <img src="../images/edgenode.png" alt="edge node">
+                    <br>
+                    <p>Our proposed work was to modify the data that users send in a way to <b>preserve privacy</b>, allow for ML models to use that data instead of the raw data, and allow edge nodes to have access to the ML model but not the raw information.</p>
+                    <br>
+                </section>
+
+                <section id="week1--lit-review">
+                    <h3>literature review</h3>
+                    <p>I never did research before and neither did any of the other two group mates. Our PhD mentor explained to us <b>what a literature review was:</b> a comprehensive summary and deep-dive into previous research on the topics of note for our own research. She taught us the followings tips and tricks on how to conduct a successful literature review:</p>
+                    <p><strong>Never read a paper linearly!</strong> </p>
+                    <ol>
+                    <li>read the title</li>
+                    <li>read the abstract</li>
+                    <li>read a little bit of the introduction: try to get some higher-level idea, the author will present what they're doing in the paper near the end of the introduction</li>
+                    <li>read related work section: to find additional papers on similar subjects</li>
+                    <li>read the conclusion: to find what the take-away is</li>
+                    <li>read the figures: captions help, diagrams usually explain their methodology</li>
+                    <li>decide if you want to continue reading this paper more in-depth</li>
+                    </ol>
+                    <p><strong>Google Scholar</strong></p>
+                    <ul>
+                    <li>type in keywords that are relevant</li>
+                    </ul>
+                    <p>After our meeting to learn about the project proposal and to learn what a literature review was, I spent the next 7 days researching to find papers that were close to what we were researching. Specifically, we were looking for papers that talked about how to allow users to modify data to be privacy preserving and how to enable ML models to use modified data on the edge (this should preserve utility so original data cannot be inverted or reconstructed). After finding each paper, I annotated them and added a quick summary for each one of topical content in our research notebook.</p>
+                    <p>Here are some of the papers that I found:</p>
+                    <ul>
+                    <li><a href="https://arxiv.org/pdf/1911.05996.pdf">Privacy and Utility Preserving Sensor-Data Transformations</a></li>
+                    <li><a href="https://arxiv.org/pdf/1710.09549.pdf">Context-Aware Generative Adversarial Privacy</a></li>
+                    <li><a href="https://arxiv.org/pdf/1511.05897.pdf">Censoring Representations with an Adversary</a></li>
+                    <li><a href="https://arxiv.org/abs/1412.0008">ScreenAvoider: Protecting Computer Screens from Ubiquitous Cameras</a></li>
+                    <li><a href="https://arxiv.org/pdf/1802.03151.pdf">Deep Private-Feature Extraction</a></li>
+                    <li><a href="https://arxiv.org/pdf/2205.06641.pdf">Privacy-Preserving Release of Mobile Sensor Data</a></li>
+                    <li><a href="http://www.cs.utoronto.ca/~erdogdu/papers/priv_aaai.pdf">Privacy-utility trade-off for time-series with application to smart-meter data</a></li>
+                    </ul>
+                </section>
+            </section>
+
+            <section id="week2">
+                <h2>week2: generate research questions, hypotheses, and metrics for evaluation</h2>
+                <p>For week 2, we focused more on generating our research questions and how to evaluate our results (when we get results). Our PhD mentor taught us about various types of machine learning models as well as ways to reconstruct data. We learned about <strong>split learning</strong> and <strong>autoencoders</strong>. </p>
+
+                <section id="week2--context-topics">
+                    <h3>context &amp; topics</h3>
+                    <p><strong>Split learning</strong> refers to having multiple layers in the data. The goal behind them is to run part of the neural network on the device, send this layer to the edge, and the edge can continue from here and train/run the rest of the model.</p>
+                    <p><strong>Autoencoders</strong> are a way to manipulate data and come up with some different version of it by taking input, compactifying it, and reconstructing it in some other format.</p>
+                    <img src="../images/autoencoder.png" alt="autoencoders"><br>
+                    <a href="https://medium.com/@birla.deepak26/autoencoders-76bb49ae6a8f">Basics of Autoencoders. Autoencoders (AE) are type of… | by Deepak Birla | Medium</a></p>
+                </section>
+
+                <section id="week2--generating-hypotheses">
+                    <h3>generating hypotheses</h3>
+                    <p>Usually we do empirical evaluations, which means we evaluate based off observed behavior in experiments. In this case, we take our data set <a href="https://archive.ics.uci.edu/ml/datasets/human+activity+recognition+using+smartphones#">UCI Machine Learning Repository: Human Activity Recognition Using Smartphones Data Set</a>, run the model on it, and look to see how it evaluates. In our case, in terms of how to evaluate, we want to see how much leakage there is before versus after running the model on it. We are trying to protect raw data, so some metric we could use is data distribution (i.e. what the raw versus transformed data looks like when plotted), and accuracy (how close the transformed data is to the raw).</p>
+                    <p>After we talked about potential research questions, hypotheses, and metrics of evaluation, we wrote all our findings in our research journal. I read a lot about <strong>differential privacy</strong> during my literature review, so most of my questions regarded if various noise-addition methods would maintain differential privacy, with my metric of evaluation being sensitivity. Differential privacy is a way to share information about a dataset while still withholding information about the individual data the dataset is comprised of. <strong>Sensitivity</strong>, or the maximum difference between outputs, of differential privacy is to be minimized in order for it to be more difficult for adversaries to get information.</p>
+                </section>
+            </section>
+
+            <section id="week3">
+                <section id="week3--implement-baseline">
+                    <h2>week3: implement baseline method</h2>
+                    <p>The method we wanted to implement is called LSTM-SPLIT. LSTM stands for <strong>long-short term memory</strong>, which is a type of recurrent neural network (RNN) that is effective in processing time-series data. It deals with the vanishing and exploding gradient problem when training RNNs, and can process point data as well as sequential data without relation to points in previous steps.</p>
+                    <br>
+                    <object data="../files/lstmsplit_notes.pdf" type="application/pdf" width="100%" height="700vh">
+                        <p>Unable to display PDF file.</p>
+                    </object>
+                </section>
+            </section>
+
+            <section id="poster">
+                <h2>poster :)</h2>
+                <img src="../images/urvposter.JPG" alt="poster">
+                <img src="../images/52704828994_85210296c5_o.jpg">
+            </section>
+
         </div>
-
-        <img src="../images/urvposter.JPG" alt="poster">
-
-
-        <img src="../images/52704828994_85210296c5_o.jpg">
-    </div>
-    
+        <nav class="section-nav">
+            <ol>
+                <li><a href="#introduction">introduction, what is URV, & kick-off meeting</a></li>
+                <li><a href="#week1">week 1</a>
+                    <ul>
+                        <li class=""><a href="#week1--intro">program intro</a></li>
+                        <li class=""><a href="#week1--proposed-project">proposed project</a></li>
+                        <li class=""><a href="#week1--lit-review">literature review</a></li>
+                    </ul>
+                </li>
+                <li><a href="#week2">week 2</a>
+                    <ul>
+                        <li class=""><a href="#week2--context-topics">context &amp; topics</a></li>
+                        <li class=""><a href="#week2--generating-hypotheses">generating hypotheses</a></li>
+                    </ul>
+                </li>
+                <li><a href="#week3">week 3</a>
+                    <ul>
+                        <li class=""><a href="#week3--implement-baseline">implement baseline method</a></li>
+                    </ul>
+                </li>
+                <li><a href="#poster">poster</a></li>
+            </ol>
+        </nav>
+    </main>
 </body>
 </html>
