@@ -61,8 +61,8 @@ a {
 #intro {
     width: 50%;
     height: 50%;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     color: white;
     position: relative;
 }
@@ -73,7 +73,12 @@ a {
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 5px;
   grid-row-gap: 5px;
-}
+  }
+  
+  .div1 { grid-area: 1 / 1 / 6 / 2; }
+  .div2 { grid-area: 4 / 2 / 6 / 3; }
+  .div3 { grid-area: 1 / 2 / 4 / 3; }
+
 
 h5 {
     display: block;
