@@ -59,12 +59,20 @@ a {
   }
 
 #intro {
-    width: 65%;
-    height: 65%;
+    width: 50%;
+    height: 50%;
     margin-top: 10%;
     margin-bottom: 10%;
     color: white;
     position: relative;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
 }
 
 h5 {
