@@ -2,9 +2,26 @@ body {
     background-color: rgb(56, 63, 60);
     align-items: center;
     justify-content: center;
-    display: flex;
+    display: block;
     height: 100vh;
     font-family: Consolas, monospace;
+    margin-top: 10%;
+    margin-bottom: 20%;
+}
+
+a:link, a:visited {
+  color:rgb(128, 186, 161);
+}
+
+a:hover {
+  color:rgb(78, 129, 107);
+}
+
+#intro {
+  color: white;
+  display: block;
+  margin-bottom: 10%;
+  text-align: center;
 }
 
 .grid {
