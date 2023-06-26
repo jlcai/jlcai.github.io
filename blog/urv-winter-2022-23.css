@@ -56,7 +56,7 @@ main > nav {
 
 .section-nav a:hover,
 .section-nav a:focus {
-	color: #666;
+	color: white;
 }
 
 /** Poor man's reset **/
@@ -65,12 +65,19 @@ main > nav {
 }
 
 
-ul, ol {
+.section-nav ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-li {
+
+.section-nav ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.section-nav li {
 	margin-left: 1rem;
 }
 
@@ -111,7 +118,7 @@ main {
 
 /** enlarge the sections for this demo, so that we have a long scrollable page **/
 section {
-	padding-bottom: 5rem;
+	padding-bottom: 2rem;
 }
 
 section img {
