@@ -111,10 +111,10 @@ main {
 
 /** enlarge the sections for this demo, so that we have a long scrollable page **/
 section {
-
+	padding-bottom: 5rem;
 }
 
 section img {
 	width: 90%;
-	padding-bottom: 10rem;
+	/* padding-bottom: 10rem; */
 }
