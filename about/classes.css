@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(56, 63, 60);
+    display: flex;
+    height: 100vh;
+    font-family: Consolas, monospace;
+}
+
+a:link, a:visited, b {
+    color:rgb(128, 186, 161);
+}
+
+a:hover, b:hover {
+    color:rgb(78, 129, 107);
+}
+
+#intro {
+    width: 80%;
+    padding: 10%;
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 0px;
+    }
+    
+    .cs { grid-area: 1 / 1 / 2 / 2; }
+    .other { grid-area: 1 / 2 / 2 / 3; }
