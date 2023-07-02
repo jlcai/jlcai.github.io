@@ -1,4 +1,3 @@
-
 let music = document.getElementById("music");
 let btn = document.getElementById("music-btn");
 

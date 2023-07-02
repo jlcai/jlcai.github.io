@@ -105,9 +105,12 @@ h5 {
 
 .btn {
   border: none;
-  background-color: inherit;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
+  background: none;
   color: rgb(128, 186, 161);
+  font-family: Consolas, monospace;
+  font-size: inherit;
+}
+
+.btn:hover {
+  color:rgb(78, 129, 107);
 }
