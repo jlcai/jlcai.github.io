@@ -102,3 +102,12 @@ h5 {
     margin-bottom: 0;
     font-weight: normal;
 }
+
+.btn {
+  border: none;
+  background-color: inherit;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: rgb(128, 186, 161);
+}
