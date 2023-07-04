@@ -1,0 +1,127 @@
+/* 1. Enable smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(56, 63, 60);
+    /* font-family: Consolas, monospace; */
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.begin {
+    font-family: Consolas, monospace;
+}
+
+.tg {
+    background:rgb(84, 119, 104);
+    border-spacing: 2px;
+    width: 100%;
+}
+
+.tg td {
+    padding: 10px;
+}
+
+.tg-0lax {
+	background-color: rgb(56, 63, 60)
+}
+/* 2. Make nav sticky */
+main > nav {
+	position: sticky;
+	top: 2rem;
+	align-self: start;
+}
+
+/* 3. ScrollSpy active styles (see JS tab for activation) */
+.section-nav li.active > a {
+	color: #333;
+	font-weight: 500;
+}
+
+/* Sidebar Navigation */
+.section-nav {
+	padding-left: 0;
+	border-left: 1px solid #efefef;
+}
+
+.section-nav a {
+	text-decoration: none;
+	display: block;
+	padding: .125rem 0;
+	color: #ccc;
+	transition: all 50ms ease-in-out; /* 💡 This small transition makes setting of the active state smooth */
+}
+
+.section-nav a:hover,
+.section-nav a:focus {
+	color: white;
+}
+
+/** Poor man's reset **/
+* {
+	box-sizing: border-box;
+}
+
+
+.section-nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.section-nav ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.section-nav li {
+	margin-left: 1rem;
+}
+
+h1 {
+	font-weight: 300;
+}
+
+a:link, a:visited, b, strong {
+    color:rgb(128, 186, 161);
+}
+
+a:hover, b:hover {
+    color:rgb(191, 228, 212);
+}
+
+/** page layout **/
+main {
+	display: grid;
+	grid-template-columns: 1fr 15em;
+	max-width: 100em;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.intro {
+	width: 90%;
+}
+
+.faq a {
+    color: rgb(191, 228, 212);
+    font-weight: bold;
+}
+
+.faq a:hover {
+	background-color: rgb(191, 228, 212);
+	color: rgb(56, 63, 60);
+}
+
+/** enlarge the sections for this demo, so that we have a long scrollable page **/
+section {
+	padding-bottom: 2rem;
+}
+
+section img {
+	width: 90%;
+	/* padding-bottom: 10rem; */
+}
