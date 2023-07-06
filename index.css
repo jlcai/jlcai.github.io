@@ -89,6 +89,7 @@ a {
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 15px;
   grid-row-gap: 15px;
+  font-size: inherit;
   }
   
   .div1 { grid-area: 1 / 1 / 3 / 2; }
