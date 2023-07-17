@@ -1,0 +1,20 @@
+[
+    {
+        "title": "freshmen-faq",
+        "date": "[2023-06-25]",
+        "description": "UMass Amherst freshmen & transfer student FAQ",
+        "url": "https://s3gfault.dev/blog/freshmen-faq"
+    },
+    {
+        "title": "urv-winter-2022-23",
+        "date": "[2023-06-26]",
+        "description": "machine learning & differential privacy @ edge nodes research",
+        "url": "https://s3gfault.dev/blog/urv-winter-2022-23"
+    },
+    {
+        "title": "picogym",
+        "date": "[2023-07-04]",
+        "description": "starting PicoCtf challenges for fun",
+        "url": "https://s3gfault.dev/blog/picogym"
+    }
+]

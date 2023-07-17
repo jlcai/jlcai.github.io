@@ -9,6 +9,7 @@
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="index.css">
 
+    <script type="module" src="js/update-index.js"></script>
     <!-- <script type="module" src="index.js"></script>
     <audio id="music" src="files/irritations.mp3" autoplay="true" loop="true"></audio> -->
 </head>
@@ -76,24 +77,15 @@
                 </ul>
             </div>
 
-            <div class="div2">
+            <div class="div2" id="projects">
                 <h3 style="font-weight: heavy; margin-bottom: 0;">PROJECTS/</h3>
-                <ul>
-                    <li><a href="https://github.com/jvelazquez4/umify">umify</a> CS326 final: quirky Spotify w/ friends list & geolocation data (MongoDB, Spotify API)</li>
-                    <li><a href="https://github.com/jlcai/390r-final-project">wannacry-research</a> CS390R final: reviewing & learning WannaCry malware codebase (first attempt at malware research)</li>
-                    <li><a href="https://s3gfault.dev/projects/archive" style="text-decoration: none">...</a></li>
-                </ul> 
+                <ul id="projects-list"></ul> 
             </div>
 
-            <div class="div3">
+            <div class="div3" id="blog">
                 <br>
                 <h3 style="font-weight: heavy; margin-bottom: 0;">BLOG/</h3>
-                <ul>
-                    <li>[2023-06-25] <a href="https://s3gfault.dev/blog/freshmen-faq">freshmen-faq</a> UMass Amherst freshmen & transfer student FAQ</li>
-                    <li>[2023-06-26] <a href="https://s3gfault.dev/blog/urv-winter-2022-23">urv-winter-2022-23</a> machine learning & differential privacy @ edge nodes research</li>
-                    <li>[2023-07-04] <a href="https://s3gfault.dev/blog/picogym">picogym</a> starting PicoCtf challenges for fun</li>
-                    <li><a href="https://s3gfault.dev/blog/archive" style="text-decoration: none">...</a></li>
-                </ul>
+                <ul id="blog-list"></ul>
             </div>
         </div>
     </div>
