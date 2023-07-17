@@ -76,7 +76,7 @@ li:before {
   
   #typing-demo-1 {
     width: 16ch;
-    animation: typing 3s steps(16), blink .5s step-end infinite alternate;
+    animation: blink .5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid;
@@ -86,7 +86,7 @@ li:before {
 
   #typing-demo-2 {
     width: 6ch;
-    animation: typing 1s steps(6), blink .5s step-end infinite alternate;
+    animation: typing 0.5s steps(6), blink .5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid;
@@ -124,27 +124,27 @@ li, h3 {
 }
 
 h3 {
-  animation-delay: 1.3s;
+  animation-delay: 0.7s;
 }
 
 li:nth-child(1) {
-  animation-delay: 1.6s;
+  animation-delay: 0.8s;
 }
 
 li:nth-child(2) {
-  animation-delay: 1.9s;
+  animation-delay: 0.9s;
 }
 
 li:nth-child(3) {
-  animation-delay: 2.2s;
+  animation-delay: 1.0s;
 }
 
 li:nth-child(4) {
-  animation-delay: 2.5s;
+  animation-delay: 1.1s;
 }
 
 li:nth-child(5) {
-  animation-delay: 2.8s;
+  animation-delay: 1.2s;
 }
 
 /* .btn {
