@@ -15,7 +15,7 @@ a:hover, b:hover {
     color:rgb(78, 129, 107);
 }
 
-#intro {
+.intro {
     width: 65%;
     height: 65%;
     padding-top: 35%;
