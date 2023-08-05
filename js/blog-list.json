@@ -3,30 +3,35 @@
         "title": "freshmen-faq",
         "date": "[2023-06-25]",
         "description": "UMass Amherst freshmen & transfer student FAQ",
-        "url": "https://s3gfault.dev/blog/freshmen-faq"
+        "url": "https://s3gfault.dev/blog/freshmen-faq",
+        "pinned": true
     },
     {
         "title": "urv-winter-2022-23",
         "date": "[2023-06-26]",
-        "description": "machine learning & differential privacy @ edge nodes research",
-        "url": "https://s3gfault.dev/blog/urv-winter-2022-23"
+        "description": "ML & differential privacy @ edge nodes research for UMass Amherst CICS's URV program",
+        "url": "https://s3gfault.dev/blog/urv-winter-2022-23",
+        "pinned": true
     },
     {
         "title": "picogym-picoctf",
         "date": "[2023-07-04]",
         "description": "doing picogym challenges for funsies (mini)",
-        "url": "https://s3gfault.dev/blog/miniblog#2023-07-04"
+        "url": "https://s3gfault.dev/blog/miniblog#2023-07-04",
+        "pinned": false
     },
     {
         "title": "miniblog",
         "date": "[2023-08-02]",
         "description": "my mini-blog for my mini-posts",
-        "url": "https://s3gfault.dev/blog/miniblog"
+        "url": "https://s3gfault.dev/blog/miniblog",
+        "pinned": true
     },
     {
         "title": "reading-again",
         "date": "[2023-08-02]",
         "description": "reading House of Leaves & initial thoughts (mini)",
-        "url": "https://s3gfault.dev/blog/miniblog#2023-08-02"
+        "url": "https://s3gfault.dev/blog/miniblog#2023-08-02",
+        "pinned": false
     }
 ]

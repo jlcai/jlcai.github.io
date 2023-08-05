@@ -23,5 +23,22 @@ fetch('js/project-list.json').then(res => res.json()).then(x => {
         items = x.slice(-5).reverse().map(item => `<li><a href="${item.url}">${item.title}</a> ${item.description}</li>`).join('');
     }
     items += `<li><a href="https://s3gfault.dev/projects/archive" style="text-decoration: none">...</a></li>`;
-    projects_list.innerHTML = `${items}`; 
+    projects_list.innerHTML += `${items}`; 
+}).catch(err => console.error('Error:', err));
+
+
+// PINNED UPATING
+const pinned_list = document.getElementById("pinned-list");
+fetch('js/blog-list.json').then(res => res.json()).then(x => {
+    let items = "";
+    let res = x.reverse().filter(item => item.pinned);
+    items = res.map(item => `<li>[BLOG] ${item.date} <a href="${item.url}">${item.title}</a> ${item.description}</li>`).join('');
+    pinned_list.innerHTML = `${items}`;
+}).catch(err => console.error('Error:', err));
+
+fetch('js/project-list.json').then(res => res.json()).then(x => {
+    let items = "";
+    let res = x.reverse().filter(item => item.pinned);
+    items = res.map(item => `<li>[PROJ] <a href="${item.url}">${item.title}</a> ${item.description}</li>`).join('');
+    pinned_list.innerHTML += `${items}`;
 }).catch(err => console.error('Error:', err));
