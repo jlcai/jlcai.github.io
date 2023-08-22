@@ -5,11 +5,14 @@ html {
 
 body {
     background-color: rgb(56, 63, 60);
-    /* font-family: Consolas, monospace; */
+    font-family: Consolas, monospace;
     color: white;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-
 .begin {
     font-family: Consolas, monospace;
 }
@@ -54,6 +57,13 @@ main > nav {
 	transition: all 50ms ease-in-out; /* 💡 This small transition makes setting of the active state smooth */
 }
 
+section img {
+	width: 90%;
+	align-items: center;
+	justify-content: center;
+}
+
+
 .section-nav a:hover,
 .section-nav a:focus {
 	color: white;
@@ -91,12 +101,14 @@ main {
 	display: grid;
 	grid-template-columns: 1fr 15em;
 	max-width: 100em;
-	width: 90%;
+	width: 60%;
 	margin: 0 auto;
+	justify-content: center;
+	padding-top: 1rem;
 }
 
 .faq {
-	width: 90%;
+	width: 95%;
 }
 
 .faq a {

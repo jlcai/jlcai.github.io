@@ -5,9 +5,13 @@ html {
 
 body {
     background-color: rgb(56, 63, 60);
-    /* font-family: Consolas, monospace; */
+    font-family: Consolas, monospace;
     color: white;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; */
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .begin {
@@ -96,14 +100,16 @@ a:hover, b:hover {
 /** page layout **/
 main {
 	display: grid;
+	padding-top: 1rem;
 	grid-template-columns: 1fr 15em;
 	max-width: 100em;
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
+	justify-content: center;
 }
 
 .intro {
-	width: 90%;
+	width: 95%;
 }
 
 .faq a {
@@ -124,4 +130,25 @@ section {
 section img {
 	width: 90%;
 	/* padding-bottom: 10rem; */
+}
+
+.redirect {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: 1fr;
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
+}
+
+#oldpg { 
+	grid-area: 1 / 1 / 2 / 2; 
+	text-align: left;
+}
+#mainpg { 
+	grid-area: 1 / 2 / 2 / 3; 
+	text-align: center;
+}
+#newpg { 
+	grid-area: 1 / 3 / 2 / 4;
+	text-align: right; 
 }

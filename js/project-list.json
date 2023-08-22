@@ -3,7 +3,7 @@
         "title": "umify",
         "description": "CS326 group final: quirky Spotify w/ friends list & geolocation data (MongoDB, Spotify API)",
         "url": "https://github.com/jvelazquez4/umify",
-        "pinned": true
+        "pinned": false
     },
     {
         "title": "wannacry-research",
