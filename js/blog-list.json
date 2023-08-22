@@ -14,24 +14,10 @@
         "pinned": false
     },
     {
-        "title": "picogym-picoctf",
-        "date": "[2023-07-04]",
-        "description": "doing picogym challenges for funsies (mini)",
-        "url": "https://s3gfault.dev/blog/miniblog#2023-07-04",
-        "pinned": false
-    },
-    {
         "title": "miniblog",
         "date": "[2023-08-02]",
         "description": "my mini-blog for my mini-posts",
         "url": "https://s3gfault.dev/blog/miniblog",
-        "pinned": false
-    },
-    {
-        "title": "reading-again",
-        "date": "[2023-08-02]",
-        "description": "reading House of Leaves & initial thoughts (mini)",
-        "url": "https://s3gfault.dev/blog/miniblog#2023-08-02",
         "pinned": false
     }
 ]
