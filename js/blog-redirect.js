@@ -1,5 +1,5 @@
 const url = window.location.href;
-
+console.log("blog-redirect.js working!")
 const older = document.getElementById("oldpg");
 const home = document.getElementById("mainpg");
 const newer = document.getElementById("newpg");
