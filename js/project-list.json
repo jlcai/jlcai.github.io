@@ -4,11 +4,5 @@
         "description": "CS326 group final: quirky Spotify w/ friends list & geolocation data (MongoDB, Spotify API)",
         "url": "https://github.com/jvelazquez4/umify",
         "pinned": false
-    },
-    {
-        "title": "wannacry-research",
-        "description": "CS390R group final: reviewing & learning WannaCry malware codebase (first attempt at malware research)",
-        "url": "https://github.com/jlcai/390r-final-project",
-        "pinned": false
     }
 ]
