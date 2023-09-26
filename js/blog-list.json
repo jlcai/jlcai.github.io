@@ -19,6 +19,13 @@
         "description": "overhaul of my website",
         "url": "https://s3gfault.dev/blog/hello-world",
         "pinned": false
+    },
+    {
+        "title": "obsidian-enjoyer",
+        "date": "[2023-09-26]",
+        "description": "becoming an Obsidian enjoyer and listing off my hotkeys and plugins",
+        "url": "https://s3gfault.dev/blog/obsidian-enjoyer",
+        "pinned": false
     }
 
 ]

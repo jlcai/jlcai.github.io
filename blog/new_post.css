@@ -23,7 +23,9 @@ a:hover, b:hover {
     position: relative;
 }
 
-h1, h2, h3 {
+h2, h3 {
+    padding-top: 15px;
+    margin-bottom: 0px;
     color:rgb(128, 186, 161);
 }
 

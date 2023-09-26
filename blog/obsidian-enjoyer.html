@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>s3gfault | obsidian-enjoyer</title>
+    <meta name="description" content="obsidian-enjoyer">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="new_post.css">
+    <script type="module" src="../js/blog-redirect.js"></script>
+</head>
+
+<body>
+    <div id="intro">
+        <h1>Obsidian Enjoyer</h1><div id="date"># date.today() == "2023-09-26"</div>
+        <br>
+        <p>I started using Obsidian close to the end of last semester (Spring 2023) because I didn't like all the note-taking applications I used prior to it (post on that later, but it was Evernote and OneNote). I'm a big fan of customization when it comes to any software that I use, so I understood the appeal of Obsidian.</p>
+        
+        <h2>Hotkeys</h2>
+        <p>Obsidian is a note-taking application that allows for a lot of customization, including custom hotkeys and <i>community plugins</i> alongside its built-in "core" plugins. For hotkeys, you can customize your own hotkeys by going to <b>Settings > Hotkeys</b> and searching for various ones. The ones I have are very similar to the hotkeys I use on my browser for opening/closing tabs, and for splitting that I use on my terminal multiplexer, <b>Terminator</b>. Here are my hotkeys:</p>
+        <ul>
+            <li><b>Close current tab</b>: CTRL + W</li>
+            <li><b>Close window</b>: CTRL + SHIFT + W</li>
+            <li><b>Create new note</b>: CTRL + N</li>
+            <li><b>Go to next tab</b>: CTRL + TAB</li>
+            <li><b>Go to previous tab</b>: CTRL + SHIFT + TAB</li>
+            <li><b>Split down</b>: CTRL + SHIFT + DOWN_ARROW</li>
+            <li><b>Split right</b>: CTRL + SHIFT + RIGHT_ARROW</li>
+        </ul>
+
+        <h2>Core Plugins</h2>
+        <p>For normal built-in Obsidian core plugins, I use only a couple:</p>
+        <ul>
+            <li><b>Quick switcher</b>: CTRL + O, allows you to quickly switch/search between different notes.</li>
+            <li><b>Templates</b>: allows you to make templates for notes that you can insert. I have a template that contains the current time and a field for inputting tags for taking lecture notes.</li>
+        </ul>
+        <p>My template file for lecture notes is very simple; it just adds this properties section to the top. Here's what it looks like in source-mode:</p>
+        <p style="color:rgb(140, 172, 158); margin-left: 20px;">
+            ---
+            <br>
+            tags: []
+            <br>
+            created: {{date:YYYY/MM/DD hh:mm a}}
+            <br>
+            ---
+        </p>
+        <h2>Community Plugins</h2>
+        <p>You can enable community plugins by going to <b>Settings > Community Plugins > Turn On Community Plugins</b>. These plugins are, as the name suggests, made and maintained by the Obsidian community for other Obsidian users to enjoy and use. If you click <b>Browse</b> when on the Community Plugins tab in your settings, you will see a vast list of all the different ones you can choose from. It's very overwhelming, so I wrote down a list of ones that I am currently using.</p>
+        <ul>
+            <li><b>Advanced Tables</b>: auto-formatted and navigation QOL chances to Markdown tables. You can hit tab/enter to navigate between the different rows -- similarly to Excel.</li>
+            <li><b>Better Word Count</b>: allows you to select a portion of text to see the word count, since Obsidian only displays the full document word count in the bottom corner. This is good for when I have writing assignments that ask me to write within a certain word count constraint.</li>
+            <li><b>Discord Rich Presence</b>: similarly to other rich presence applications (i.e. VSCode, actual video games, etc.), now your friends can see what files or vault you're editing :)</li>
+            <li><b>Excalidraw</b>: allows you to draw/highlight/etc. </li>
+            <li><b>Highlightr</b>: the downside to Markdown-based note-taking is that there isn't a lot of formatting you can do besides heading to catch your attention as you skim through your notes. This allows easier HTML-formatting (span) to highlight certain key words/phrases in different colors.</li>
+            <li><b>Omnisearch</b>: a better search for Obsidian with OCR support. Requires a different plugin <b>Text Extractor.</b></li>
+            <li><b>Quick Latex for Obsidian</b>: as the name suggests, provides quick, auto-formatted LaTeX formatting (i.e. auto-closing $) to your Markdown notes.</li>
+            <li><b>Spreadsheets</b>: allows you to make spreadsheets in Obsidian, similarly to Excel or Google Sheets.</li>
+        </ul>
+        <br><br>
+        <div class="redirect">
+            <div id="oldpg"></div>
+            <div id="mainpg"></div>
+            <div id="newpg"></div>
+        </div>
+    </div>
+    
+</body>
