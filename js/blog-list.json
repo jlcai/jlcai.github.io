@@ -12,5 +12,13 @@
         "description": "UMass Amherst CICS's URV program (ML & differential privacy @ edge nodes research)",
         "url": "https://s3gfault.dev/blog/urv-winter-2022-23",
         "pinned": false
+    },
+    {
+        "title": "hello-world",
+        "date": "[2023-09-26]",
+        "description": "overhaul of my website",
+        "url": "https://s3gfault.dev/blog/hello-world",
+        "pinned": false
     }
+
 ]
