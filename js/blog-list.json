@@ -26,6 +26,13 @@
         "description": "becoming an Obsidian enjoyer and listing off my hotkeys and plugins",
         "url": "https://s3gfault.dev/blog/obsidian-enjoyer",
         "pinned": false
+    },
+    {
+        "title": "farmers-market",
+        "date": "[2023-10-01]",
+        "description": "the joys of $18 locally-grown apples",
+        "url": "https://s3gfault.dev/blog/farmers-market",
+        "pinned": false
     }
 
 ]
