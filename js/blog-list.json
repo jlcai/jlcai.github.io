@@ -4,35 +4,42 @@
         "date": "[2023-06-25]",
         "description": "UMass Amherst freshmen & transfer student FAQ",
         "url": "https://s3gfault.dev/blog/freshmen-faq",
-        "pinned": true
+        "tags": ["freshmen", "faq", "UMass Amherst"]
     },
     {
         "title": "urv-winter-2022-23",
         "date": "[2023-06-26]",
         "description": "UMass Amherst CICS's URV program (ML & differential privacy @ edge nodes research)",
         "url": "https://s3gfault.dev/blog/urv-winter-2022-23",
-        "pinned": false
+        "tags": ["research", "machine learning", "IoT", "UMass Amherst"]
     },
     {
         "title": "hello-world",
         "date": "[2023-09-26]",
         "description": "overhaul of my website",
         "url": "https://s3gfault.dev/blog/hello-world",
-        "pinned": false
+        "tags": []
     },
     {
         "title": "obsidian-enjoyer",
         "date": "[2023-09-26]",
         "description": "becoming an Obsidian enjoyer and listing off my hotkeys and plugins",
         "url": "https://s3gfault.dev/blog/obsidian-enjoyer",
-        "pinned": false
+        "tags": ["notes", "Obsidian", "UMass Amherst"]
     },
     {
         "title": "farmers-market",
         "date": "[2023-10-01]",
         "description": "the joys of $18 locally-grown apples",
         "url": "https://s3gfault.dev/blog/farmers-market",
-        "pinned": false
+        "tags": ["Amherst"]
+    },
+    {
+        "title": "cs-beginnings",
+        "date": "[2023-10-06]",
+        "description": "beginner background information and resources for computer science students",
+        "url": "https://s3gfault.dev/blog/cs-beginnings",
+        "tags": ["education", "computer science", "cybersecurity", "UMass Amherst"]
     }
 
 ]
