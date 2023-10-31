@@ -99,6 +99,9 @@ driver.find_element(By.XPATH, '//button[@type="submit"]').click()
 
 <pre><div class="codeblock"><code># search
 
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+
 search_input = input("SEARCH FOR?: ")
 search_bar = driver.find_element(By.CLASS_NAME, 'search-global-typeahead__input')
 search_bar.send_keys(search_input)
