@@ -33,5 +33,12 @@
         "description": "the joys of $18 locally-grown apples",
         "url": "https://s3gfault.dev/blog/farmers-market",
         "tags": []
+    },
+    {
+        "title": "rescuelab-hackathon",
+        "date": "[2023-10-30]",
+        "description": "what a linkedin scraper does to a man",
+        "url": "https://s3gfault.dev/blog/rescuelab-hackathon",
+        "tags": ["UMass Amherst", "education"]
     }
 ]
