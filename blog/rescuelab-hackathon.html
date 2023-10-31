@@ -8,6 +8,8 @@
 
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="new_post.css">
+    <link href="/prism.css" rel="stylesheet" />
+    <script src="/prism.js"></script>
     <script type="module" src="../js/blog-redirect.js"></script>
 </head>
 
@@ -30,7 +32,7 @@
             <p>Before I even started though, one of my friends mentioned to be careful about LinkedIn scraping because of the <a href="https://en.wikipedia.org/wiki/HiQ_Labs_v._LinkedIn">hiQ v. LinkedIn</a> court case. Essentially, she told me that LinkedIn attempted to sue a lot of groups who were scraping their website. This becomes topical later...</p>
 
             <p>And then begins my personal LinkedIn hell that lasted a total of approximately six hours. I started with some started scraper code that one of our group members made:</p>
-            <pre><div class="codeblock"><code>import requests
+            <pre><code class="language-py">import requests
 from bs4 import BeautifulSoup
 
 url = "https://example.com/"
@@ -38,14 +40,14 @@ res = requests.get(url)
 htmlData = res.content
 parsedData = BeautifulSoup(htmlData, "html.parser")
 print(parsedData.prettify())
-</code></div></pre>
+</code></pre>
             <p>Here is where we ran into our first roadblock. LinkedIn's login page requires a email (or username) and password like most authentication services to be able to actually view any content on the site. That means we would be unable to actually scrape any information via the template scraper code above -- we need to actually <i>log-in</i> first.</p>
         
             <p>Firstly, I looked into existing LinkedIn scrapers <a href="https://medium.com/mlearning-ai/how-to-build-a-web-scraper-for-linkedin-6b49b6b6adfc">like this one</a>. All of these scrapers involved some method of automating web browser interaction via Python, so <b>Selenium</b>, a Python package that supports browser automation, was used. Selenium needs a <b>WebDriver</b> for my specific browser to help automate browser interaction, so I went to go look for one for my Chrome/Chromium browser. I never worked with Selenium or WebDrivers but this shouldn't be that bad (right?)</p>
             
             <p>This is where I was stuck for a while. I was looking at the <a href='https://googlechromelabs.github.io/chrome-for-testing/'>Chromium (ChromeDriver) WebDrivers for Selenium</a>, checking what version of Chromium I was using (v118.0.5993.70) to make sure it was correct, and consistently testing my starter WebDriver code (seen below)...but it still wasn't working!</p>
 
-            <pre><div class="codeblock"><code>import requests
+            <pre><code class="language-py">import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
@@ -54,13 +56,13 @@ import os
 driver = webdriver.Chrome()
 driver.get('https://linkedin.com/uas/login')        # login page URL
 time.sleep(4)                                       # wait for page to load
-</code></div></pre>
+</code></pre>
 
             <p>Initially, I had an issue where I was not allowed to put a string with a path to the ChromeDriver in <b>webdriver.Chrome('PATH')</b>. That feature was deprecated apparently and I kept opening an instance of a Chromium-based browser with <b>"data;"</b> passed into the search bar. My driver didn't work for another two hours until I found <a href="https://bugs.launchpad.net/ubuntu/+source/firefox/+bug/2025268">this one blogpost</a> that reminded me I used Ubuntu Snap Store to install Chromium initially. This potentially could have been the reason why Instaloader didn't work either. When I found this out, I yelled 'oh my god' at my team's table very loudly and explained the situation to them. It turns out I was not the only person who has faced this issue before (and others spent way longer on the problem...upwards of three days straight). We bonded over our hatred of Snap for a moment and then I went to go celebrate my discovery with a snack (pita chips and hummus).</p>
 
             <p>After finishing my little snack, I fixed my Selenium ChromeDriver instance (since the old method of specifying the executable path directly in the ChromeDriver's arguments, I needed to import ChromeDriver Service and Options. Here is the final (and finally working) driver code:</p>
 
-<pre><div class="codeblock"><code>import requests
+<pre><code class="language-py">import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -78,12 +80,11 @@ driver.set_window_size(1400, 1400)
 
 driver.get('https://linkedin.com/uas/login')
 time.sleep(4)                                               # wait for page to load
-</code></div></pre>
+</code></pre>
 
             <p>Now my ChromeDriver opens Chromium and goes to the LinkedIn log-in page! Very exciting stuff! Now all I needed to do was make sure that I could input the login information (username/email and password) to the specified fields, hit the 'login' button, and then <i style="color: rgb(128, 186, 161);">(hacker voice)</i> we're in. The labelling for the fields to input this information was very clear upon examination of the HTML of the page, so things were pretty straight forward. Here's the code for logging in after the ChromeDriver opens up the page:</p>
 
-<pre><div class="codeblock"><code># logging in
-
+<pre><code class="language-py"># logging in
 username = driver.find_element(By.ID, 'username')
 user_email = input("EMAIL: ")
 username.send_keys(user_email)
@@ -93,12 +94,11 @@ user_password = input("PASSWORD: ")
 password.send_keys(user_password)
 
 driver.find_element(By.XPATH, '//button[@type="submit"]').click()
-</code></div></pre>
+</code></pre>
 
             <p>To reuse the same joke: <i style="color: rgb(128, 186, 161);">(hacker voice)</i> I'm in. Now we're finally logged into LinkedIn...and we did it all via the power of command-line! Now, we need to search for whatever query we're looking for (for example, some company like Meta) and then scrape the posts that we stumble upon. After poking around the HTML code for the feed page, I found out that the search bar class is called <b>'search-global-typeahead__input'</b>. Also, LinkedIn doesn't have a "search" button, so we need to simulate hitting the enter key in order to actually search anything after inputting our query in the search bar. </p>
 
-<pre><div class="codeblock"><code># search
-
+<pre><code class="language-py"># search
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
@@ -107,7 +107,7 @@ search_bar = driver.find_element(By.CLASS_NAME, 'search-global-typeahead__input'
 search_bar.send_keys(search_input)
 search_bar.send_keys(Keys.RETURN)
 time.sleep(20)
-</code></div></pre>            
+</code></pre>            
 
             <p>Now we can search for things on LinkedIn all from only the command-line! Now we can just find all the HTML elements, like classes and IDs, that house all of the text of LinkedIn posts! Right? Right...?</p>
 
@@ -117,8 +117,7 @@ time.sleep(20)
 
             <p>If the code was not rendered live every time you visit the page and we just had the raw HTML, the following code with the ChromeDriver and everything would have worked with a static site:</p>
 
-<pre><div class="codeblock"><code># getting current url's html data
-
+<pre><code class="language-py"># getting current url's html data
 current_url = driver.current_url
 res = requests.get(current_url)
 html_data = res.content
@@ -126,7 +125,6 @@ soup = BeautifulSoup(html_data, "html.parser")
 
 
 # parsing the posts
-
 dat = []
 results = soup.find_all('span')
 for item in results:
@@ -135,10 +133,8 @@ for item in results:
         if node.text is not None:
             dat.append(node.text)
 
-
-
 driver.quit()
-</code></div></pre>   
+</code></pre>   
 
             <p>After this discovery of what seems like waaaay harder of a task than anticipated, I did something very similar to my last line of code: my <b>DRIVE</b> to continue working on this scraper ceased and I <b>QUIT</b>. I only had 30 minutes left of the hackathon to come up with something, so I attempted to fiddle around with simulating some scroll simulator which didn't end up working.</p>
             
