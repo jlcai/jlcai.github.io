@@ -11,16 +11,23 @@ body {
 
 a:link, a:visited, b {
     color:rgb(128, 186, 161);
+    text-decoration: none;
 }
 
-a:hover, b:hover {
+a:hover {
     color:rgb(78, 129, 107);
 }
 
 #intro {
     width: 60%;
-    color: white;
+    color: rgb(218, 218, 218);
     position: relative;
+}
+
+p {
+    color: rgb(221, 221, 221);
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 h2, h3 {
@@ -31,6 +38,26 @@ h2, h3 {
 
 #date {
     color: rgb(140, 172, 158);
+}
+
+.caption {
+    padding-bottom: 15px;
+    padding-top: 5px;
+    /* padding-left: 20px;
+    padding-right: 20px; */
+    font-style: italic;
+    color: rgb(205, 205, 205);
+    font-size: 14px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.codeblock {
+    background-color: rgb(71, 79, 76);
+    padding: 20px;
+    color: rgb(184, 255, 191);
 }
 
 .redirect {
