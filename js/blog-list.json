@@ -9,7 +9,7 @@
     {
         "title": "urv-winter-2022-23",
         "date": "[2023-06-26]",
-        "description": "CICS URV program (ML & differential privacy @ edge nodes research)",
+        "description": "CICS URV program",
         "url": "https://s3gfault.dev/blog/urv-winter-2022-23",
         "tags": ["UMass Amherst", "education"]
     },
@@ -30,7 +30,7 @@
     {
         "title": "rescuelab-hackathon",
         "date": "[2023-10-30]",
-        "description": "what a linkedin scraper does to a man",
+        "description": "what a LinkedIn scraper does to a man",
         "url": "https://s3gfault.dev/blog/rescuelab-hackathon",
         "tags": ["UMass Amherst", "education"]
     },
