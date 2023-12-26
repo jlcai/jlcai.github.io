@@ -14,6 +14,20 @@
         "tags": ["UMass Amherst", "education"]
     },
     {
+        "title": "picoctf",
+        "date": "[2023-07-04]",
+        "description": "starting CMU's picoCTF challenges",
+        "url": "https://s3gfault.dev/blog/picoctf",
+        "tags": ["education"]
+    },
+    {
+        "title": "house-of-leaves-01",
+        "date": "[2023-08-02]",
+        "description": "reading House of Leaves by M. Danielewski",
+        "url": "https://s3gfault.dev/blog/house-of-leaves-01",
+        "tags": []
+    },
+    {
         "title": "hello-world",
         "date": "[2023-09-26]",
         "description": "overhaul of my website",
@@ -40,5 +54,12 @@
         "description": "the (co-)director's cut",
         "url": "https://s3gfault.dev/blog/hackumass-xi",
         "tags": ["UMass Amherst", "education"]
+    },
+    {
+        "title": "++2023;",
+        "date": "[2023-11-23]",
+        "description": "2023 reflection & what to do next",
+        "url": "https://s3gfault.dev/blog/hello-2024",
+        "tags": []
     }
 ]
