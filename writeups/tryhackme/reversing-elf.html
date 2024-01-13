@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>s3gfault | tryhackme/reversing-elf</title>
+    <meta name="description" content="tryhackme/reversing-elf">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../new_post.css">
+</head>
+
+<body>
+    <div id="intro">
+        <h1>Reversing ELF Write-Up</h1><div id="date"># date.today() == "2024-01-12"</div>
+        <br>
+        <p>These are my write-ups for <a href="https://tryhackme.com/room/reverselfiles">TryHackMe's Reversing ELF room</a>. Exact answers are hidden behind spoiler tags <span class="spoiler">like this</span>.</p>  
+
+        <h3>crackme1</h3>
+        <blockquote><p>Let's start with a basic warmup, can you run the binary?</p></blockquote>
+        
+        <p>Although I could just run <code>chmod +x crackme1</code> to execute the program to see what it does, I threw the ELF binary into Ghidra to get more practice looking and dissecting decompiled code. This is what it gave me -- two variables with one of them having each index set to some hexadecimal.</p>
+        <img src="../../images/Pasted image 20240112140823.png">
+        <p>After renaming a few things and retyping things, we find that the main bulk of the code in the <code>main()</code> function is to set <code>orig</code> to "AAAAAAAAAAAAAAAAAAAAAAAAAAA" (0x41 = "A", 0x1b is 27 times) and iterate over a for-loop 27 times, adding the index <code>i</code> of <code>local_78</code> to the result <code>orig</code>. </p>
+        <p>After adding 0x41 and the value at each index of <code>local_78</code>, you eventually get the result of line 40 to be <span class="spoiler">flag{not_that_kind_of_elf}</span>.</p>
+        
+        <h3>crackme2</h3>
+        <blockquote><p>Find the super-secret password! and use it to obtain the flag</p></blockquote>
+        <p>Running <code>chmod +x crackme2</code> and attempting to run ./crackme2 gives us the error that the usage should be "Usage: ./crackme2 password". After putting the ELF into Ghidra, we can see in the main() function that it checks the second parameter (param_2[1]) against a string "super_secret_password" with strcmp().</p>
+        <p>After this check passes, a function called giveFlag() is called. We run <code>./crackme2 super_secret_password</code> and are given the flag <span class="spoiler">flag{if_i_submit_this_flag_then_i_will_get_points}</span>. </p>
+        
+        <h3>crackme3</h3>
+        <blockquote><p>Use basic reverse engineering skills to obtain the flag</p></blockquote>
+        <p>When looking at the binary, we can see that there is a segment starting in line 21 that is the expected behavior once entering a correct password:</p>
+        <img src="../../images/Pasted image 20240112141835.png">
+        <p>We can assume that the string in line 22 is base64 encoded, so we can decode it by running <code>base64 --d <<< ZjByX3kwdXJfNWVjMG5kX2xlNTVvbl91bmJhc2U2NF80bGxfN2gzXzdoMW5nNQ==</code> in command-line, which gives us the flag <span class="spoiler">flag{f0r_y0ur_5ec0nd_le55on_unbase64_4ll_7h3_7h1ng5}</span>.</p>
+
+        <h3>crackme4</h3>
+        <blockquote><p>Analyze and find the password for the binary?</p></blockquote>
+        <p>For this one, we need to look at the dynamic library calls (as provided in the hint that "This time the string is hidden and we used strcmp) so we use the command <a href="https://man7.org/linux/man-pages/man1/ltrace.1.html">ltrace</a>, which runs the command given until it exits and records/prints out the system calls executed. After running <code>ltrace ./crackme4 test</code>, we can see this as the output:</p>
+        <img src="../../images/Pasted image 20240112143022.png">
+        <p>So our test password "test" is compared with strcmp() against the string <span class="spoiler">"my_m0r3_secur3_pwd"</span>, which is our password/flag for this challenge.</p>
+
+        <h3>crackme5</h3>
+        <blockquote><p>What will be the input of the file to get output "Good game"?</p></blockquote>
+        <p>After looking at it in Ghidra, it looks like there is some strncmp() comparison we have to do to pass the check and get the "Good game" output:</p>
+        <img src="../../images/Pasted image 20240112144532.png">
+        <img src="../../images/Pasted image 20240112144512.png">
+        <p>We do the same methodology as last time by running <code>ltrace ./crackme5</code> then adding some garbage input to see how the test fails. We get this output (I put "yes" as mine):</p>
+        <img src="../../images/Pasted image 20240112144601.png">
+        <p>Our key is <span class="spoiler">OfdlDSA|3tXb32~X3tX@sX`4tXtz</span>.</p>
+
+        <h3>crackme6</h3>
+        <blockquote><p>Analyze the binary for the easy password</p></blockquote>
+        <p>Looking at the source, we see there is a function called <code>my_secure_test()</code>. This function just hardcoded the exact password as <span class="spoiler">1337_pwd</span>, so that's our answer.</p>
+        <img src="../../images/Pasted image 20240112144920.png">
+
+        <h3>crackme7</h3>
+        <blockquote><p>Analyze the binary to get the flag</p></blockquote>
+        <p>After looking at the main() function, we can see there is some sort of menu with three main options. However, on line 43, we can see there is a secret hard-coded option that is triggered once the user inputs 0x7a69 (31337) as the input when the menu is prompted. When we do this, we get the flag <span class="spoiler">flag{much_reversing_very_ida_wow}</span>.</p>
+        <img src="../../images/Pasted image 20240112145413.png">
+
+        <h3>crackme8</h3>
+        <blockquote><p>Analyze the binary and obtain the flag</p></blockquote>
+        <p>I opened the code, looked at main(), and changed the hex representation on line 10 to decimal because that's the one check that is done to see if access should be granted. We input -889262067 as the input and get the flag <span class="spoiler">flag{at_least_this_cafe_wont_leak_your_credit_card_numbers}</span>.</p>
+        <img src="../../images/Pasted image 20240112151705.png">
+    
+        <br><br>
+        <div class="redirect">
+            <div></div>
+            <div><a href="https://s3gfault.dev/" style="font-weight: bold; text-decoration: none;">Back to Main Page</a></div>
+            <div></div>
+        </div>
+
+    </div>
+
+    
+    
+</body>
