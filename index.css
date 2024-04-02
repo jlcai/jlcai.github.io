@@ -98,8 +98,8 @@ li:before {
   }
 
   #typing-demo-2 {
-    width: 7ch;
-    animation: typing .4s steps(7), blink .5s step-end infinite alternate;
+    width: 4ch;
+    animation: typing .2s steps(4), blink .5s step-end infinite alternate;
     white-space: nowrap;
     overflow: hidden;
     border-right: 3px solid;
