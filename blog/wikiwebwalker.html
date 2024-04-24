@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>s3gfault | wikiwebwalker</title>
+    <meta name="description" content="wikiwebwalker">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="new_post.css">
+    <link href="/prism.css" rel="stylesheet" />
+    <script src="/prism.js"></script>
+    <script type="module" src="../js/blog-redirect.js"></script>
+</head>
+
+<body>
+    <div id="intro">
+        <h1>wikiwebwalker</h1><div id="date"># date.today() == "2024-04-23"</div>
+        <blockquote>This blog post (and project) is a work in progress! Check back later for more updates. Last updated: 2024-04-23, did the preliminary search algorithm, dataset gathering, and semantic similarity processing.</blockquote>
+        <br>
+        
+        <img src="../images/wikiwebwalker.png">
+        <blockquote><b>RESEARCH QUESTION: </b>Can semantic similarity and contextual relatedness analysis be used to more quickly determine paths between articles in an interlinked database (such as Wikipedia)?</blockquote>
+
+        
+        <p>This is a project I did as part of <a href="https://people.cs.umass.edu/~brenocon/cs485_s24/">COMPSCI 485: Applications of Natural Language Processing (NLP)</a> taught by Brendan O'Connor in the Spring 2024 semester. I worked on this project alongside two of my friends: <a href="https://github.com/nateyboy12">Nate Courchesne</a> and <span class="spoiler">a second secret contributor shhhh, will be added later</span>.</p>  
+        
+        <h2>Background and other topic contexts</h2>
+        <p>The final project for this class's main goal is to apply some natural language processing (NLP) system to some task. Jacob came up with the idea to create some NLP model that can beat <a href="https://www.thewikigame.com/">The Wiki Game</a>. The Wiki Game is a game where you're given an entry point Wikipedia article and an exit point Wikipedia article. Your main goal is to go into the entry point article, traverse through the various links within it, and get to the exit point article in as few steps/hops from article-to-article as possible.</p>
+        <p>The typical game meta usually is to find links within the entry point that contextually make sense with the exit point (i.e. "Units of measurement" inter-node compared to "Microscope" exit node since both deal with "micro-"). Another strategy is to find just general synonyms in the inter-nodes to the exit point article name. We aimed with this project to simulate that meta by utilizing <b>semantic similarity</b>. Semantic similarity is a measure of how frequently words co-occur with each other, where words that are (near) synonyms score the highest. It can be used in a lot of areas such as topic and sentiment analysis, machine translation, and optimizing searches. The core "research" question we wanted to answer to help us solve The Wiki Game was mentioned in the beginning of this post, where we try to use semantic similarity and contextual relatedness analysis to have a more efficient search of paths given nodes in an interlinked database.</p>
+        <p>Due to the nature of general user traversal while trying to beat The Wiki Game, we initially wanted to use a search algorithm that prioritizes looking at all the nodes on a layer before traversing deeper into a network. Because of this specific search property we wanted to use, we decided to use <b>breadth-first search</b> that does exactly that (visiting all connected nodes of graph in level-by-level manner).</p>
+        <p>Overall, this is a network science/graph search and semantic similarity problem. We want to create some search algorithm that steps through each article, gather all of the links, compare them via some semantic similarity process to the exit article's name, and use that "scoring" as a sort of heuristic to guide us further down our search. If our score becomes further away than the previous article layer of inter-nodes, we backtrack and go back to the previous article.</p>
+        <p>The scoring heuristic and backtracking parts of our problem make our search algorithm more similar to <b>A* search</b> which involves past knowledge and finds the shortest path after calculating the score of neighboring nodes. Now, our proposed solution can be summed up by <b>A* search on Wikipedia article nodes with semantic similarity scores (compared to exit article) as a heuristics function</b>.</p>
+        
+        <h2>Attempted murder on my laptop (downloading 17,000,000+ Wikipedia articles)</h2>
+        <p>To get all of the Wikipedia articles, instead of building some web crawler utilizing webdrivers like Selenium, we opted to download a bunch of static files from <a href="https://dumps.wikimedia.org/">the Wikimedia Downloads/Dumps page</a>. One singular dump file is a lot of files (23gb <i>compressed...</i>). This is because we were a bit worried about Selenium using the Python <b>requests</b> library a bit too much and overloading the Wikipedia servers (since they say NOT to scrape their site to obtain large amounts of articles).</p>
+        <blockquote>
+            Please do not use a web crawler to download large numbers of articles. Aggressive crawling of the server can cause a dramatic slow-down of Wikipedia. <a href="https://en.wikipedia.org/wiki/Wikipedia:Database_download#Please_do_not_use_a_web_crawler">(Source)</a>
+        </blockquote>
+        <p>I downloaded one of the big current XML dump file and kept it on my local system and extracted them (very slowly) to my own device (probably not the smartest idea but we'll deal with the consequences of that later). If I were smarter and/or had more time, I would have offloaded all of it on a server I had back home and given ssh credentials to my friends but we were in a pinch. It's okay though because now I have random Wikipedia articles in my local drive for easy access if I don't have an internet connection. Now I can read about <a href="https://en.wikipedia.org/wiki/Phoneme">Phonemes</a> or <a href="https://en.wikipedia.org/wiki/Pope_John_Paul_II">Pope John Paul II</a> if I'm on an airplane or something.</p>
+        <p>After downloading the initial Wikipedia XML dump file, I used a tool called <a href="wikiextractor">Wikiextractor</a> that helped preprocess and extract all of the articles really nicely given the zipped XML dump. This made my life really easy because each file that was spit out from the tool contained several Wikipedia files -- all we had to do was write some regex parser (thanks Nate) to separate each article from the larger files. We could then feed these articles and their titles into our graph search and semantic similarity algorithms.</p>
+<pre><code class="language-html">
+    < doc id="1687791" url="https://en.wikipedia.org/wiki?curid=1687791" title="Lord God Bird">
+        Lord God Bird
+        
+        Lord God bird may refer to one of two similar-looking large woodpeckers of North America:
+        Lord God Bird may also refer to:
+        
+    < /doc>
+</code></pre>
+        <div class="caption">Example of one of the articles that we can pull from the aggregated/combined large articles extracted via Wikiextractor. What could Lord God Bird also refer to...? The world will never know since the Wikiextractor didn't finish this one.... Other articles seemed to parse fine, but this article's bullet points seem to not have parsed correctly. I guess Lord God Bird is too powerful for Wikiextractor.🐦</div>
+
+        <h2>Semantic similarity shenanigans</h2>
+        <p>For our semantic similarity scoring function, we need to use some word embedding transformer. <b>Word2vec</b> is an example of a word-to-vector embedding transformer, and is a group of related models that learns word embeddings when given groups of words by capturing their semantic and syntactic qualities. This would be good to use if we were going to be using a Bag-Of-Words (BOW) representation model for our Wikipedia articles, but since we want contextual understanding in each article and not take potentially wrong connotations for certain articles, we want to use something else.</p>
+        <p>Since we want contextual understanding as well as semantic similarity, we want to use a bidirectional representation for each word when we calculate their embeddings (i.e. getting the context on the left and right in all layers). Thus, we decided to use the <b>Bidirectional Encoder Representations from Transformers (BERT)</b> language representation model (okay we actually used <b>DistilBERT</b> because it's way <a href="https://medium.com/huggingface/distilbert-8cf3380435b5">smaller and faster</a> and only has like a 3% degretation from BERT so it's good enough for my intents and purposes!).</p>
+        <p>DistilBERT used in conjunction with the <b>SentenceTransformer</b> Python library will help us produce a model that can compute the word embeddings for the documents (in this case, Wikipedia articles) we feed it. This will help us with our similarity checking/scoring pipeline later. I used the <b>multi-qa-distilbert-cos-v1</b> pretrained model sourced from <a href="https://www.sbert.net/docs/pretrained_models.html">this list of pretrained models</a> because it had good speed and accuracy according to their benchmarks. It was also tuned on a criteria we're looking for (comparing some list of articles to a target article, which is similar to the semantic search they said this model is used for when answering some query/question.</p>
+        <pre><code class="language-py">
+import os
+import numpy as np
+import pandas as pd
+from sentence_transformers import SentenceTransformer
+from sklearn.metrics.pairwise import cosine_similarity
+import random
+
+# using distilbert stsb, will help with embeddings later
+model = SentenceTransformer('multi-qa-distilbert-cos-v1')
+        </code></pre>
+        <p>For calculating similarity scores, I used something called <b>cosine similarity</b>, which takes the normalized dot product of vector V and W and calculates the similarity. This is measured by the following formula: <b>K(X, Y) = <X, Y> / (||X||*||Y||)</b>. This is the basis of all of the similarity checking we will be doing.</p>
+        <p>For taking the similarity of a bunch of articles on a single layer (layer being an article and every link that shows up on it), I simulated a singular layer by sampling random amounts of links from the dataset I downloaded earlier. I created some fake "exit" article (some string, I didn't use an article yet for it) to compare all these articles to later.</p>
+        <pre><code class="language-py">
+# sample documents
+document1 = []  # list of all articles on a layer
+with open('test_files/test.txt', 'r') as f:
+    for line in f:
+        document1.append(line)
+
+random.shuffle(document1)
+document1 = document1[:len(document1)//4]   # get rid of 4 if want to do 100, keep for 25
+print(f"Amount of articles in this search layer: {len(document1)}")
+
+# exit point article
+document2 = "I am a student at University of Massachusetts Amherst"     
+        </code></pre>
+
+        <h2>If you were a graph search algorithm, I think you'd be A* (a star)!</h2>
+        <p>WIP: write graph search algorithm.</p>
+
+        <h2>Frankenstein-ing it all together</h2>
+
+        <br><br>
+        <div class="redirect">
+            <div id="oldpg"></div>
+            <div id="mainpg"></div>
+            <div id="newpg"></div>
+        </div>
+    </div>
+    
+</body>

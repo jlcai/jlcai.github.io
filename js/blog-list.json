@@ -54,5 +54,12 @@
         "description": "2023 reflection & what to do next",
         "url": "https://s3gfault.dev/blog/hello-2024",
         "tags": []
+    },
+    {
+        "title": "wikiwebwalker",
+        "date": "[2024-04-23]",
+        "description": "beating the Wiki Game with NLP!",
+        "url": "https://s3gfault.dev/blog/wikiwebwalker",
+        "tags": []
     }
 ]

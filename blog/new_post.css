@@ -54,10 +54,26 @@ img {
     max-width: 100%;
 }
 
+blockquote {
+    border-left: 3px solid rgb(78, 129, 107);
+    padding-left: 10px;
+}
+
 .codeblock {
     background-color: rgb(71, 79, 76);
     padding: 20px;
     /* color: rgb(184, 255, 191); */
+}
+
+.spoiler {
+    background-color: rgb(71, 79, 76);
+    color: transparent;
+    user-select: none;
+}
+
+.spoiler:hover{
+    background-color: inherit;
+    color: rgb(128, 186, 161);
 }
 
 .redirect {
