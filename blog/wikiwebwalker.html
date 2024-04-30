@@ -22,8 +22,11 @@
         </div>
         <hr style="border: 2px dashed rgb(78, 129, 107);">
 
-        <h1>wikiwebwalker</h1><div id="date"># date.today() == "2024-04-23"</div>
-        <blockquote>This blog post (and project) is a work in progress! Check back later for more updates. Last updated: 2024-04-23, did the preliminary search algorithm, dataset gathering, and semantic similarity processing.</blockquote>
+        <h1>wikiwebwalker</h1>
+        <div id="date"># date_posted == "2024-04-23"</div>
+        <div id="date"># last_updated == "2024-04-29"</div>
+
+        <blockquote>This blog post (and project) is a work in progress! Check back later for more updates. Right now, I only have part of the semantic similarity code up. I'm going to add the sections for the search algorithm implementation and putting it all together laterrrrrr!</blockquote>
         <br>
         
         <img src="../images/wikiwebwalker.png">
@@ -72,7 +75,7 @@ import random
 # using distilbert stsb, will help with embeddings later
 model = SentenceTransformer('multi-qa-distilbert-cos-v1')
         </code></pre>
-        <p>For calculating similarity scores, I used something called <b>cosine similarity</b>, which takes the normalized dot product of vector V and W and calculates the similarity. This is measured by the following formula: <b>K(X, Y) = <X, Y> / (||X||*||Y||)</b>. This is the basis of all of the similarity checking we will be doing.</p>
+        <p>For calculating similarity scores, I used something called <b>cosine similarity</b>, which takes the normalized dot product of vector V and W and calculates the similarity. This is measured by the following formula: <b>K(V, W) = <V, W> / (||V||*||W||)</b>. This is the basis of all of the similarity checking we will be doing.</p>
         <p>For taking the similarity of a bunch of articles on a single layer (layer being an article and every link that shows up on it), I simulated a singular layer by sampling random amounts of links from the dataset I downloaded earlier. I created some fake "exit" article (some string, I didn't use an article yet for it) to compare all these articles to later.</p>
         <pre><code class="language-py">
 # sample documents
@@ -82,19 +85,21 @@ with open('test_files/test.txt', 'r') as f:
         document1.append(line)
 
 random.shuffle(document1)
-document1 = document1[:len(document1)//4]   # get rid of 4 if want to do 100, keep for 25
+document1 = document1[:len(document1)]   # for 100, change it to :len(document1)//4 for 25, etc...
 print(f"Amount of articles in this search layer: {len(document1)}")
 
 # exit point article
 document2 = "I am a student at University of Massachusetts Amherst"     
         </code></pre>
 
-        <h2>If you were a graph search algorithm, I think you'd be A* (a star)!</h2>
+        <h2>If you were a graph search algorithm, I think you'd be A*!</h2>
         <p>WIP: write graph search algorithm.</p>
 
         <h2>Frankenstein-ing it all together</h2>
 
         <br><br>
+
+        <hr style="border: 2px dashed rgb(78, 129, 107);">
         <div class="redirect">
             <div class="oldpg"></div>
             <div class="mainpg"></div>
