@@ -1,8 +1,8 @@
 const url = window.location.href;
 console.log("blog-redirect.js working!")
-const older = document.getElementById("oldpg");
-const home = document.getElementById("mainpg");
-const newer = document.getElementById("newpg");
+const older = document.getElementsByClassName("oldpg");
+const home = document.getElementsByClassName("mainpg");
+const newer = document.getElementsByClassName("newpg");
 
 let main_redirect =  `<a href="https://s3gfault.dev/" style="font-weight: bold; text-decoration: none;">Back to Main Page</a>`;
 
