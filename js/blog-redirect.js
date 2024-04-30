@@ -14,19 +14,25 @@ fetch('../js/blog-list.json')
     for (let i = 0; i < items.length; ++i) {
         // not oldest, not newest
         if (items[i][0].includes(url) && (i !== 0) && (i !== items.length-1)) {
-            older.innerHTML = `« <a href="${items[i-1][0]}">${items[i-1][1]}</a>`;
-            home.innerHTML = main_redirect;
-            newer.innerHTML = `<a href="${items[i+1][0]}">${items[i+1][1]}</a> »`;
+            for (let j=0; j<older.length; ++j) {
+                older[j].innerHTML = `« <a href="${items[i-1][0]}">${items[i-1][1]}</a>`;
+                home[j].innerHTML = main_redirect;
+                newer[j].innerHTML = `<a href="${items[i+1][0]}">${items[i+1][1]}</a> »`;
+            }
         }
         // oldest
         else if (items[i][0].includes(url) && (i === 0)) {
-            home.innerHTML = main_redirect;
-            newer.innerHTML = `<a href="${items[i+1][0]}">${items[i+1][1]}</a> »`;
+            for (let j=0; j<older.length; ++j) {
+                home[j].innerHTML = main_redirect;
+                newer[j].innerHTML = `<a href="${items[i+1][0]}">${items[i+1][1]}</a> »`;
+            }
         }
         // newest
         else if (items[i][0].includes(url)){
-            older.innerHTML = `« <a href="${items[i-1][0]}">${items[i-1][1]}</a>`;
-            home.innerHTML = main_redirect;
+            for (let j=0; j<older.length; ++j) {
+                older[j].innerHTML = `« <a href="${items[i-1][0]}">${items[i-1][1]}</a>`;
+                home[j].innerHTML = main_redirect;
+            }
         }
     }
 }).catch(err => console.error('Error:', err));
