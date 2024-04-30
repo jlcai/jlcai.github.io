@@ -10,7 +10,7 @@ body {
 }
 
 a:link, a:visited {
-    color:rgb(128, 186, 161);
+    color:#80baa1;
 }
 
 a:hover {
@@ -192,7 +192,7 @@ li:before {
 }
 
 /* TREE ANIMATION */
-li, h3, {
+li, h3 {
   opacity: 0;
   animation: reveal 1s ease-in-out forwards;
 }
