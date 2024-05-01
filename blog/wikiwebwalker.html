@@ -47,7 +47,9 @@
         <blockquote>
             Please do not use a web crawler to download large numbers of articles. Aggressive crawling of the server can cause a dramatic slow-down of Wikipedia. <a href="https://en.wikipedia.org/wiki/Wikipedia:Database_download#Please_do_not_use_a_web_crawler">(Source)</a>
         </blockquote>
-        <p>I downloaded one of the big current XML dump file and kept it on my local system and extracted them (very slowly) to my own device (probably not the smartest idea but we'll deal with the consequences of that later). If I were smarter and/or had more time, I would have offloaded all of it on a server I had back home and given ssh credentials to my friends but we were in a pinch. It's okay though because now I have random Wikipedia articles in my local drive for easy access if I don't have an internet connection. Now I can read about <a href="https://en.wikipedia.org/wiki/Phoneme">Phonemes</a> or <a href="https://en.wikipedia.org/wiki/Pope_John_Paul_II">Pope John Paul II</a> if I'm on an airplane or something.</p>
+        <p>I downloaded one of the big current XML dump file, kept it on my local system, and extracted them (very slowly) to my own device (probably not the smartest idea but I dealt with the consequences of that later). After dealing with the ramifications of my laptop slowing down to an (almost) hault, I moved the files over to an external SSD...which I probably should have done in the first place. If I were smarter and/or had more time, I would have offloaded all of it on a server I had back home and given ssh credentials to my friends so we could all access them -- but we were in a pinch. It's okay though because now I have random Wikipedia articles on an SSD for easy access if I don't have an internet connection. Now I can read about <a href="https://en.wikipedia.org/wiki/Phoneme">Phonemes</a> or <a href="https://en.wikipedia.org/wiki/Pope_John_Paul_II">Pope John Paul II</a> if I'm on an airplane or something.</p>
+    
+        
         <p>After downloading the initial Wikipedia XML dump file, I used a tool called <a href="wikiextractor">Wikiextractor</a> that helped preprocess and extract all of the articles really nicely given the zipped XML dump. This made my life really easy because each file that was spit out from the tool contained several Wikipedia files -- all we had to do was write some regex parser (thanks Nate) to separate each article from the larger files. We could then feed these articles and their titles into our graph search and semantic similarity algorithms.</p>
 <pre><code class="language-html">
     < doc id="1687791" url="https://en.wikipedia.org/wiki?curid=1687791" title="Lord God Bird">
@@ -75,11 +77,13 @@ import random
 # using distilbert stsb, will help with embeddings later
 model = SentenceTransformer('multi-qa-distilbert-cos-v1')
         </code></pre>
-        <p>For calculating similarity scores, I used something called <b>cosine similarity</b>, which takes the normalized dot product of vector V and W and calculates the similarity. This is measured by the following formula: <b>K(V, W) = <V, W> / (||V||*||W||)</b>. This is the basis of all of the similarity checking we will be doing.</p>
+        
         <p>For taking the similarity of a bunch of articles on a single layer (layer being an article and every link that shows up on it), I simulated a singular layer by sampling random amounts of links from the dataset I downloaded earlier. I created some fake "exit" article (some string, I didn't use an article yet for it) to compare all these articles to later.</p>
         <pre><code class="language-py">
-# sample documents
-document1 = []  # list of all articles on a layer
+#### CREATING SAMPLE DOCUMENTS ####
+
+# document1: array of all links/articles on current layer
+document1 = []
 with open('test_files/test.txt', 'r') as f:
     for line in f:
         document1.append(line)
@@ -88,15 +92,54 @@ random.shuffle(document1)
 document1 = document1[:len(document1)]   # for 100, change it to :len(document1)//4 for 25, etc...
 print(f"Amount of articles in this search layer: {len(document1)}")
 
-# exit point article
+# document2: simulated exit point article, will be replaced with an actual article later
 document2 = "I am a student at University of Massachusetts Amherst"     
         </code></pre>
+        <p>For calculating similarity scores, I used something called <b>cosine similarity</b>, which takes the normalized dot product of vector V and W and calculates the similarity. This is measured by the following formula: <b>K(V, W) = <V, W> / (||V||*||W||)</b>. This is the basis of all of the similarity checking we will be doing.</p>
+<pre><code class="language-py">
+#### COSINE SIMILARITY -- CALCULATING SCORE BETWEEN EMBEDDINGS ####
+
+# exit_embedding: the embedding of the exit point article
+# link_embeddings: the embeddings of all articles in current layer
+# returns indices of link_embeddings articles in order of most similar to least to exit_embedding
+
+def find_similar(exit_embedding, link_embeddings):
+    similarity_matrix = cosine_similarity(exit_embedding, link_embeddings)
+    print(f"Cosine Similarity Matrix: {similarity_matrix}")
+    return np.flip(similarity_matrix.argsort())
+</code></pre>
+        <p>Now we can write the actual functionality of the code utilizing this cosine similarity function. In order to use the <b>find_similar()</b> function, we need to pass in the <i>embeddings</i> of the exit point article and array of articles in the current layer. We can do that with the following:</p>
+<pre><code class="language-py">
+print("Encoding document1 (BFS'ed articles)...")
+link_embeddings = model.encode(document1)     # will be replaced with BFS Search links later
+
+print("Encoding document2 (exit)...")
+exit_embedding = model.encode([document2])  # careful when scaling up to full doc
+</code></pre>
+        <p>Now we can just run the function on these obtained embeddings and write the most similar article to a file to save it! We will edit this code later so that the score of the most similar article (the semantic similarity score) will be what is passed as a heuristic to our graph search. We want this array of most similar articles to persist though in case we need to do some backtracing.</p>
+<pre><code class="language-py">
+### GETTING SIMILARITY SCORES ###
+sim_indices = find_similar(exit_embedding, link_embeddings)   # persistent list of most similar indices
+
+# the MOST similar article
+mostsim_index = sim_indices[0]
+mostsim_article = document1[mostsim_index]   
+print(f"Similarity score of most similar article: {sim_indices[0]}")
+print(f"Most similar article to {document2}: in mostsim.txt")
+with open("mostsim.txt", "w") as f:
+    f.write(mostsim)    # don't forget to run the following after each call or else it won't overwrite:
+                        # rm mostsim.txt && touch mostsim.txt
+</code></pre>
+        <p>And that's how we did the semantic similarity scoring for the embeddings of the articles on the current letter vs. the exit article's embeddings! We just need to integrate this part of the code to act as heuristics for the next section, the A* graph search.</p>
+
 
         <h2>If you were a graph search algorithm, I think you'd be A*!</h2>
-        <p>WIP: write graph search algorithm.</p>
 
+        
         <h2>Frankenstein-ing it all together</h2>
 
+
+        <h2>Reflection</h2>
         <br><br>
 
         <hr style="border: 2px dashed rgb(78, 129, 107);">
