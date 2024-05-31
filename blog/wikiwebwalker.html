@@ -24,16 +24,15 @@
 
         <h1>wikiwebwalker</h1>
         <div id="date"># date_posted == "2024-04-23"</div>
-        <div id="date"># last_updated == "2024-05-11"</div>
+        <div id="date"># last_updated == "2024-05-31"</div>
 
-        <blockquote>This blog post (and project) is a work in progress! Check back later for more updates. Currently working on this blog post, tidying up the codebase, and a final (and more formal) write-up!</blockquote>
         <br>
         
         <img src="../images/wikiwebwalker.png">
         <blockquote><b>RESEARCH QUESTION: </b>Can semantic similarity and contextual relatedness analysis be used to more quickly determine paths between articles in an interlinked database (such as Wikipedia)?</blockquote>
 
         
-        <p>This is a project I did as part of <a href="https://people.cs.umass.edu/~brenocon/cs485_s24/">COMPSCI 485: Applications of Natural Language Processing (NLP)</a> taught by Brendan O'Connor in the Spring 2024 semester. I worked on this project alongside two of my friends: <a href="https://github.com/nateyboy12">Nate Courchesne</a> and <a href="https://github.com/20jgrassi">Jacob Grassi</a>.</p>  
+        <p>This is a project I did as part of <a href="https://people.cs.umass.edu/~brenocon/cs485_s24/">COMPSCI 485: Applications of Natural Language Processing (NLP)</a> taught by Brendan O'Connor in the Spring 2024 semester. I worked on this project alongside two of my friends: <a href="https://github.com/nateyboy12">Nate Courchesne</a> and <a href="https://github.com/20jgrassi">Jacob Grassi</a>. This is a relatively informal (but informative) write-up for this project but a formalized paper version can be found <a href="../files/485_Final_Project_wikiwebwalker.pdf" class="image fit">here</a>.</p>  
         
         <h2>Background and other topic contexts</h2>
         <p>The final project for this class's main goal is to apply some natural language processing (NLP) system to some task. Jacob came up with the idea to create some NLP model that can beat <a href="https://www.thewikigame.com/">The Wiki Game</a>. The Wiki Game is a game where you're given an entry point Wikipedia article and an exit point Wikipedia article. Your main goal is to go into the entry point article, traverse through the various links within it, and get to the exit point article in as few steps/hops from article-to-article as possible.</p>
@@ -133,16 +132,147 @@ with open("mostsim.txt", "w") as f:
     f.write(mostsim)    # don't forget to run the following after each call or else it won't overwrite:
                         # rm mostsim.txt && touch mostsim.txt
 </code></pre>
-        <p>And that's how we did the semantic similarity scoring for the embeddings of the articles on the current letter vs. the exit article's embeddings! We just need to integrate this part of the code to act as heuristics for the next section, the A* graph search.</p>
+        <p>And that's how we did the semantic similarity scoring for the embeddings of the articles on the current letter vs. the exit article's embeddings! We just need to integrate this method of calculating a semantic similarity score with A* graph search as well as figure out what to use for our heuristics now.</p>
 
-
-        <h2>If you were a graph search algorithm, I think you'd be A*!</h2>
-
+        <h2>A* search and... what heuristics, exactly?</h2>
+        <p>For the A* search, we wrote a pretty standard A* search algorithm in Python. The main issue became figuring out what to use for the heuristics that we use to calculate the path to take when conducting our search. Our first attempt of calculating these heuristics was using <b>full-size documents/corpus</b> (i.e. the entire length of the article) by passing that into the code from the previous section, and hoping that it would work in a reasonable amount of time. Parsing took way too long, so we opted for a secondary approach which just feeds the <b>titles</b> of articles (i.e. "Samurai") which took a FRACTION of the time it took for full-docs.</p>
         
-        <h2>Frankenstein-ing it all together</h2>
+        <p>Since a speedier search is obviously way more desirable, we wanted to use the "title" method as our main one but we were worried about the lack of "context" for a topic since it only is based on a few words (the length of a title) at most. Our project advisor and professor told us during our final presentation proposed a third approach aside from titles only (huge lack of context) or full doc (way too long of parsing time): <b>first paragraph</b>. The theory behind this new approach would be that there would be a good enough of context via the most important information in a Wikipedia article usually being first (i.e. setting the stage and thus setting a fair amount of context). The succinctness of it should shorten the processing time. This seemed fine in theory, but would it work in practice?</p>
+        
+        <h2>Gathering results</h2>
+        <p>Now that we have our semantic similarity calculator and our graph search, we needed to test our three different methods of calculating heuristics. During the research of this project, we found a website called <a href="https://www.sixdegreesofwikipedia.com/">Six Degrees of Wikipedia (SDOW)</a> that essentially solves the exact same research question that we were trying to do. Although disappointing that we didn't find a somewhat novel question to tackle, we used their extremely fast search as a baseline to compare our methods to. Thus, we tested our three heuristics methods against it:</p>
+        <ol>
+            <li>passing in <b>article titles</b></li>
+            <li>passing in <b>article first paragraphs</b></li>
+            <li>and passing in <b>article full corpuses.</b></li>
+        </ol>
 
+        <p>We also tried the following entry node to exit node paths to test each heuristic method's speed and number of hops (redundancy and effectiveness of the semantic similarity analysis):</p>
+        <ol>
+            <li><b>Judge Dredd -> North Korea</b></li>
+            <li><b>North Korea -> Japan</b></li>
+            <li><b>Judge Dredd -> Samurai</b></li>
+            <li><b>Japan -> Shogun</b></li>
+            <li>and <b>Japan -> Samurai</b>.</li>
+        </ol>
+        <p>Here are the results (and the <a href="https://colab.research.google.com/drive/1gwZOI26yQxRU7bCDu7e4GRBL_umcdUMm?usp=sharing">Google Colab notebook</a> I wrote to generate the graphs in case you also want to generate similar graphs, it took me 30 minutes to figure out how to make clustered stacked bar charts).</p>
+        <style type="text/css">
+            .tg  {border-collapse:collapse;border-spacing:0;}
+            .tg td{border-color:black;border-style:solid;border-width:1px;font-size:14px;
+              overflow:hidden;padding:10px 5px;word-break:normal;}
+            .tg th{border-color:black;border-style:solid;border-width:1px;font-size:14px;
+              font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+            .tg .tg-gkbf{background-color:#383e3c;border-color:inherit;font-style:italic;text-align:left;vertical-align:top}
+            .tg .tg-o3nu{background-color:#383e3c;border-color:inherit;text-align:left;vertical-align:top}
+            .tg .tg-s4wd{background-color:#4c645a;border-color:inherit;font-style:italic;text-align:left;vertical-align:top}
+            .tg .tg-meii{background-color:#80baa1;border-color:inherit;color:#383e3c;font-weight:bold;text-align:left;vertical-align:top}
+            .tg .tg-4dqc{background-color:#383e3c;border-color:inherit;text-align:left;vertical-align:top}
+            .tg .tg-s56j{background-color:#383e3c;border-color:#807f7f;text-align:left;vertical-align:top}
+.tg .tg-w6f2{background-color:#4c645a;border-color:#807f7f;font-style:italic;text-align:left;vertical-align:top}
+.tg .tg-3prh{background-color:#4c645a;border-color:#807f7f;text-align:left;vertical-align:top}
+.tg .tg-meii{background-color:#38614f;border-color:inherit;color:#dcdcdc;font-weight:bold;text-align:left;vertical-align:top}
+.tg .tg-fe5w{background-color:#383e3c;border-color:#807f7f;font-style:italic;text-align:left;vertical-align:top}
+</style>
+<table class="tg" style="width: 100%"><thead>
+  <tr>
+    <th class="tg-meii">SEARCH</th>
+    <th class="tg-meii"></th>
+    <th class="tg-meii">SDOW</th>
+    <th class="tg-meii">TITLE</th>
+    <th class="tg-meii">1ST PARAGRAPH</th>
+    <th class="tg-meii">FULL DOCUMENT</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td class="tg-fe5w" rowspan="2">Judge Dredd -> <br> North Korea</td>
+    <td class="tg-s56j"># of Links Traversed (Hops)</td>
+    <td class="tg-s56j">3 hops</td>
+    <td class="tg-s56j">5 hops</td>
+    <td class="tg-s56j">8 hops</td>
+    <td class="tg-s56j">6 hops</td>
+  </tr>
+  <tr>
+    <td class="tg-s56j">Time Elapsed (s)</td>
+    <td class="tg-s56j">1.03s</td>
+    <td class="tg-s56j">5.65s</td>
+    <td class="tg-s56j">240.8s</td>
+    <td class="tg-s56j">135.65s</td>
+  </tr>
+  <tr>
+    <td class="tg-w6f2" rowspan="2">North Korea -> <br> Japan</td>
+    <td class="tg-3prh"># of Links Traversed (Hops)</td>
+    <td class="tg-3prh">1 hop</td>
+    <td class="tg-3prh">2 hops</td>
+    <td class="tg-3prh">2 hops</td>
+    <td class="tg-3prh">2 hops</td>
+  </tr>
+  <tr>
+    <td class="tg-3prh">Time Elapsed (s)</td>
+    <td class="tg-3prh">0.49s</td>
+    <td class="tg-3prh">0.7s</td>
+    <td class="tg-3prh">50.2s</td>
+    <td class="tg-3prh">58.6s</td>
+  </tr>
+  <tr>
+    <td class="tg-fe5w" rowspan="2">Judge Dredd -> <br> Samurai</td>
+    <td class="tg-s56j"># of Links Traversed (Hops)</td>
+    <td class="tg-s56j">2 hops</td>
+    <td class="tg-s56j">7 hops</td>
+    <td class="tg-s56j">6 hops</td>
+    <td class="tg-s56j">6 hops</td>
+  </tr>
+  <tr>
+    <td class="tg-s56j">Time Elapsed (s)</td>
+    <td class="tg-s56j">1.07s</td>
+    <td class="tg-s56j">4.6s</td>
+    <td class="tg-s56j">187.5s</td>
+    <td class="tg-s56j">183.2s</td>
+  </tr>
+  <tr>
+    <td class="tg-w6f2" rowspan="2">Japan -> <br> Shogun</td>
+    <td class="tg-3prh"># of Links Traversed (Hops)</td>
+    <td class="tg-3prh">1 hop</td>
+    <td class="tg-3prh">2 hops</td>
+    <td class="tg-3prh">2 hops</td>
+    <td class="tg-3prh">3 hops</td>
+  </tr>
+  <tr>
+    <td class="tg-3prh">Time Elapsed (s)</td>
+    <td class="tg-3prh">0.44s</td>
+    <td class="tg-3prh">0.8s</td>
+    <td class="tg-3prh">51.1s</td>
+    <td class="tg-3prh">92.1s</td>
+  </tr>
+  <tr>
+    <td class="tg-fe5w" rowspan="2">Japan -> <br> Samurai</td>
+    <td class="tg-s56j"># of Links Traversed (Hops)</td>
+    <td class="tg-s56j">1 hop</td>
+    <td class="tg-s56j">3 hops</td>
+    <td class="tg-s56j">3 hops</td>
+    <td class="tg-s56j">3 hops</td>
+  </tr>
+  <tr>
+    <td class="tg-s56j">Time Elapsed (s)</td>
+    <td class="tg-s56j">0.42s</td>
+    <td class="tg-s56j">2.4s</td>
+    <td class="tg-s56j">125.7s</td>
+    <td class="tg-s56j">83.4s</td>
+  </tr>
+</tbody></table>
+<br>
+        <img src="../images/wikiwebwalker_results.png">
+        <p>Looking at the results, it's obvious that using titles is way faster than the first paragraph or full doc methods. It also seemed like, weirdly enough, the first paragraph and full doc methods interchangeably did worse/better across different types of searches we performed. This can probably be chalked up to decisions that DistilBERT makes during the search process. The number of hops that each method took is also about the same across all of them, which means that using just titles seems like a good enough method that is way faster than the other two to solve this sort of problem.</p>
 
-        <h2>Reflection</h2>
+        <h2>Trials, tribulations, and reflections</h2>
+        <p>In the future if I were to work more on this project, I'd probably want to solve the space complexity issues. In <a href="https://github.com/jwngr/sdow/tree/master">SDOW's Github repo</a>, it tells you how to set up your own version of SDOW locally on your machine via SQL-like databases, etc. They have a lot more technology when it comes to storage of all of the databases and they also use the Wikipedia API (something we purposefully did NOT want to use). We also had a much smaller subset of Wikipedia (due to the space complexity of... my machine) that we worked on during these test searches, whereas SDOW has an unlimited access to the API that can fetch whatever information it wants. Due to these constraints, I think this is why we did not perform as well as SDOW. Our title searching A* graph search seemed very promising!!
+            
+
+        <p>Another challenge was with the extraction method we used (Wikiextractor) because they didn't parse every article correctly and left out a lot of information (see Lord God Bird above). Our project advisor said that this may be due to the fact that newer Wikipedia articles have different formatting than old articles, and some may contain a certain amount of newlines (\n) that Wikiextractor, which was made a very long time ago, may treat as a line break denoting the end of an article. At the time of posting this, I'm not entirely sure how we'd fix this problem, but we'd need to look at different methods of extraction.</p>
+
+        <p>Even if these issues are fixed, it's also important to note that a lot of Wikipedia articles are fairly short (especially if they're about niche topics), so some searches will be way longer than others irregardless of how good one's search method is -- simply because there is less to look at. So, there may be an element of efficiency issues just because of the variable length an article can take.</p>
+
+        <p>Overall, this was a very fun project! I had never worked with natural language processing prior to taking this class and it was really interesting to be able to come up with a question, devise a potential solution, and test it out. This project also led me to play a lot of The Wiki Game itself for "research purposes" (procrastinating on other work). As mentioned earlier, a formal version of this writeup can be found <a href="../files/485_Final_Project_wikiwebwalker.pdf" class="image fit">here</a> and the code (when I make it public) can be found <a href="https://github.com/jlcai/wikiwebwalker">here</a>. I hope this was a relatively light read and pretty understandable work :) thank you for reading!</p>
+        <br>
         <img src="../images/485_slides.gif" style="display: flex; justify-content: center; align-items: center;">
 
         <br><br>
