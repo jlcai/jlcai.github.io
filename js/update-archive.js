@@ -10,7 +10,7 @@ if (document.getElementById("blog-list")) {
 if (document.getElementById("history-list")) {
     const history_list = document.getElementById("history-list");
     fetch('../js/history-list.json').then(res => res.json()).then(x => {
-        let items = x.reverse().map(item => `<li style="li:before { content: '${item.date}'}">${item.date} ${item.long}</li>`).join('');
+        let items = x.reverse().map(item => `<li style="li:before { content: '<b>${item.date}</b>'; padding-right: 7px; }; margin-top:20px; "> <b>${item.date}</b> ${item.long}</li>`).join('');
         history_list.innerHTML = `${items}`; 
     }).catch(err => console.error('Error:', err));
 }
