@@ -31,10 +31,10 @@ const history_list = document.getElementById("history-list");
 fetch('js/history-list.json').then(res => res.json()).then(x => {
     let items = "";
     if (x.length <= 20) {
-        items = x.reverse().map(item => `<li><a href="${item.date}">${item.description}</a></li>`).join('');
+        items = x.reverse().map(item => `<li>${item.date} ${item.description}</li>`).join('');
     }
     else {
-        items = x.slice(-20).reverse().map(item => `<li><a href="${item.date}">${item.description}</a></li>`).join('');
+        items = x.slice(-20).reverse().map(item => `<li>${item.date} ${item.description}</li>`).join('');
     }
     items += `<li><a href="https://s3gfault.dev/history/archive" style="text-decoration: none">...</a></li>`;
     history_list.innerHTML += `${items}`; 
