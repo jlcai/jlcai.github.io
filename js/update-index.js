@@ -31,7 +31,7 @@ const history_list = document.getElementById("history-list");
 fetch('js/history-list.json').then(res => res.json()).then(x => {
     let items = "";
     if (x.length <= 20) {
-        items = x.reverse().map(item => `<li style="margin: 10px 0">${item.date} ${item.short}</li>`).join('');
+        items = x.reverse().map(item => `<li>${item.date} ${item.short}</li>`).join('');
     }
     else {
         items = x.slice(-20).reverse().map(item => `<li>${item.date} ${item.short}</li>`).join('');
