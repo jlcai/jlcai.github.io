@@ -37,7 +37,7 @@ fetch('js/history-list.json').then(res => res.json()).then(x => {
         items = x.slice(-20).reverse().map(item => `<li><a href="${item.url}">${item.title}</a></li>`).join('');
     }
     items += `<li><a href="https://s3gfault.dev/history/archive" style="text-decoration: none">...</a></li>`;
-    projects_list.innerHTML += `${items}`; 
+    history_list.innerHTML += `${items}`; 
 }).catch(err => console.error('Error:', err));
 
 // // PINNED UPATING
