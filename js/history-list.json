@@ -1,82 +1,97 @@
 [
     {
         "date":"[2022-11-11]",
-        "description":"organized <a href=\"https://hackumass.com\">HackUMass X!</a>"
+        "short":"organized <a href=\"https://hackumass.com\">HackUMass X!</a>",
+        "long": "I helped organize <a href=\"https://hackumass.com\">HackUMass X</a>, a student-led hackathon at UMass Amherst, which happened the weekend of Nov 11-13, 2022!"
     },
     {
         "date":"[2023-02-17]",
-        "description":"<a href=\"https://www.flickr.com/photos/umasscics/albums/72177720306196317\">URV Win22/23 poster session!</a>"
+        "short":"<a href=\"https://www.flickr.com/photos/umasscics/albums/72177720306196317\">URV Win22/23 poster session!</a>",
+        "long":"I volunteered to do research over the winter 2022-2023 session for CICS's Undergraduate Research Volunteer (URV) program and presented our research poster today!"
     },
     {
         "date":"[2023-06-25]",
-        "description":"<a href=\"https://s3gfault.dev/blog/freshmen-faq\">freshman-faq</a> published"
+        "short":"<a href=\"https://s3gfault.dev/blog/freshmen-faq\">freshman-faq</a> published",
+        "long":"Published <a href=\"https://s3gfault.dev/blog/freshmen-faq\">freshman-faq</a>, a comprehensive list on FAQ for incoming freshmen and transfer students to UMass Amherst."
     },
     {
         "date":"[2023-06-26]",
-        "description":"<a href=\"https://s3gfault.dev/blog/urv-winter-2022-23\">urv-winter-2022-23</a> published"
+        "short":"<a href=\"https://s3gfault.dev/blog/urv-winter-2022-23\">urv-winter-2022-23</a> published",
+        "long":"Published <a href=\"https://s3gfault.dev/blog/urv-winter-2022-23\">urv-winter-2022-23</a>, a blogpost detailing the research I did as part of the URV program (Ensuring Privacy at Edge Nodes in a Network)."
     },
     {
         "date":"[2023-07-04]",
-        "description":"<a href=\"https://s3gfault.dev/blog/picoctf\">picoctf</a> published"
+        "short":"<a href=\"https://s3gfault.dev/blog/picoctf\">picoctf</a> published",
+        "long":"Published <a href=\"https://s3gfault.dev/blog/picoctf\">picoctf</a>, a short blogpost on starting basic CTF challenges on PicoCTF."
     },
     {
         "date":"[2023-09-26]",
-        "description":"the big site revamp :tm:"
+        "short":"the big site revamp :tm:",
+        "long":"Revamped the site!"
     },
     {
         "date":"[2023-09-26]",
-        "description":"<a href=\"https://s3gfault.dev/blog/hello-world\">hello-world</a> published"
+        "short":"<a href=\"https://s3gfault.dev/blog/hello-world\">hello-world</a> published",
+        "long":"Published <a href=\"https://s3gfault.dev/blog/hello-world\">hello-world</a>, a short blogpost on the new site revamp."
     },
     {
         "date":"[2023-09-26]",
-        "description":"<a href=\"https://s3gfault.dev/blog/obsidian-enjoyer\">obsidian-enjoyer</a> published"
+        "short":"<a href=\"https://s3gfault.dev/blog/obsidian-enjoyer\">obsidian-enjoyer</a> published",
+        "long":"Published <a href=\"https://s3gfault.dev/blog/obsidian-enjoyer\">obsidian-enjoyer</a>, a short blogpost about using Obsidian, a popular text editor."
     },
     {
         "date": "[2023-10-13]",
-        "description": "participated in<a href=\"https://infosec.cs.umass.edu/news/cybersecurity-institute-holds-inaugural-hackathon\"> Rescuelab Hackathon</a>"
+        "short": "participated in <a href=\"https://infosec.cs.umass.edu/news/cybersecurity-institute-holds-inaugural-hackathon\">Rescuelab Hackathon</a>",
+        "long": "Participated in the annual <a href=\"https://infosec.cs.umass.edu/news/cybersecurity-institute-holds-inaugural-hackathon\">Rescuelab Hackathon</a> hosted by the UMass Amherst Infosec/Cybersecurity Institute."
     },
     {
         "date": "[2023-10-30]",
-        "description": "<a href=\"https://s3gfault.dev/blog/rescuelab-hackathon\">rescuelab-hackathon</a> published"
+        "short": "<a href=\"https://s3gfault.dev/blog/rescuelab-hackathon\">rescuelab-hackathon</a> published",
+        "long":"Published <a href=\"https://s3gfault.dev/blog/rescuelab-hackathon\">rescuelab-hackathon</a>, a blogpost about the LinkedIn scraper I made as part of Rescuelab Hackathon 2023."
     },
     {
         "date": "[2023-11-10]",
-        "description": "organized <a href=\"https://hackumass.com\">HackUMass XI!</a>"
+        "short": "organized <a href=\"https://hackumass.com\">HackUMass XI!</a>",
+        "long":"I helped organize <a href=\"https://hackumass.com\">HackUMass XI</a>, a student-led hackathon at UMass Amherst, which happened the weekend of Nov 10-12, 2023 -- this time as the co-director!"
     },
     {
         "date": "[2023-11-23]",
-        "description": "<a href=\"https://s3gfault.dev/blog/hackumass-xi\">hackumass-xi</a> published"
+        "short": "<a href=\"https://s3gfault.dev/blog/hackumass-xi\">hackumass-xi</a> published",
+        "long": "Published <a href=\"https://s3gfault.dev/blog/hackumass-xi\">hackumass-xi</a>, a blogpost on how we organized HackUMass XI and how the event went."
     },
     {
         "date": "[2023-12-26]",
-        "description": "<a href=\"https://s3gfault.dev/blog/hello-2024\">++2023;</a> published"
+        "short": "<a href=\"https://s3gfault.dev/blog/hello-2024\">++2023;</a> published",
+        "long": "Published <a href=\"https://s3gfault.dev/blog/hello-2024\">++2023;</a>, a blogpost on what skills I want to improve on in the new year!"
     },
     {
         "date": "[2024-03-23]",
-        "description": "competed in <a href=\"https://neccdl.org/neccdc/\">NECCDC 2024</a>"
-    },
-    {
-        "date": "[2024-04-23]",
-        "description": "added this history section! :D"
+        "short": "competed in <a href=\"https://neccdl.org/neccdc/\">NECCDC 2024</a>",
+        "long": "I competed in the Northeast Collegiate Cyber Defense Competition (CCDC) 2024!"
     },
     {
         "date": "[2024-04-29]",
-        "description": "added badges! <a href=\"https://github.com/jlcai/jlcai.github.io/blob/main/images/sitebutton3.png?raw=true\">(add me to ur site!)</a>"
+        "short": "added badges! <a href=\"https://github.com/jlcai/jlcai.github.io/blob/main/images/sitebutton3.png?raw=true\">(add me to ur site!)</a>",
+        "long": "Added badges to the main page. <a href=\"https://github.com/jlcai/jlcai.github.io/blob/main/images/sitebutton3.png?raw=true\">Add me to your site!</a>"
     },
     {
         "date": "[2024-04-29]",
-        "description": "added <a href=\"https://s3gfault.dev/about\">about.html</a> page"
+        "short": "added <a href=\"https://s3gfault.dev/about\">about.html</a> page",
+        "long": "Added an <a href=\"https://s3gfault.dev/about\">about page</a>."
     },
     {
         "date": "[2024-05-16]",
-        "description": "awarded a UMass Senior Leadership Award"
+        "short": "awarded a UMass Senior Leadership Award",
+        "long": "I was awarded a UMass Senior Leadership Award for CICS from Dean Laura Haas, an award that is only granted to one student from the graduating Senior class for each college."
     },
     {
         "date": "[2024-05-18]",
-        "description": "graduated from undergrad! 🎓🎉"
+        "short": "graduated from undergrad! 🎓🎉",
+        "long":"I graduated from UMass Amherst with my Bachelors of Science in Computer Science! 🎓🎉"
     },
     {
         "date": "[2024-05-31]",
-        "description": "<a href=\"https://s3gfault.dev/blog/wikiwebwalker\">wikiwebwalker</a> published"
+        "short": "<a href=\"https://s3gfault.dev/blog/wikiwebwalker\">wikiwebwalker</a> published",
+        "long":"Published <a href=\"https://s3gfault.dev/blog/wikiwebwalker\">wikiwebwalker</a>, a blogpost on my CS 485: Applications of NLP final group project where we beat The Wiki Game utilizing network science and natural language processing."
     }
 ]
