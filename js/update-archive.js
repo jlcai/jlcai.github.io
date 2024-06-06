@@ -7,6 +7,14 @@ if (document.getElementById("blog-list")) {
     }).catch(err => console.error('Error:', err));
 }
 
+if (document.getElementById("history-list")) {
+    const history_list = document.getElementById("history-list");
+    fetch('../js/history-list.json').then(res => res.json()).then(x => {
+        let items = x.reverse().map(item => `<li>${item.date} ${item.description}</li>`).join('');
+        history_list.innerHTML = `${items}`; 
+    }).catch(err => console.error('Error:', err));
+}
+
 // UMASS
 // BLOG UPDATING
 if (document.getElementById("umass-amherst-blog-list")) {
