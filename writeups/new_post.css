@@ -7,6 +7,7 @@ body {
   margin-top: 10vh;
   margin-bottom: 10vh;
   color: white;
+  
 }
 
 a:link, a:visited, b {
@@ -22,12 +23,14 @@ a:hover {
     width: 60%;
     color: rgb(218, 218, 218);
     position: relative;
+    
 }
 
 p {
     color: rgb(221, 221, 221);
     padding-bottom: 10px;
     padding-top: 10px;
+    
 }
 
 h2, h3 {
