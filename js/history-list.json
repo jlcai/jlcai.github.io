@@ -16,18 +16,13 @@
     },
     {
         "date":"[2023-06-26]",
-        "short":"<a href=\"https://s3gfault.dev/blog/urv-winter-2022-23\">urv-winter-2022-23</a> published",
-        "long":"Published <a href=\"https://s3gfault.dev/blog/urv-winter-2022-23\">urv-winter-2022-23</a>, a blogpost detailing the research I did as part of the URV program (Ensuring Privacy at Edge Nodes in a Network)."
+        "short":"<a href=\"https://s3gfault.dev/blog/urv\">urv</a> published",
+        "long":"Published <a href=\"https://s3gfault.dev/blog/urv\">urv</a>, a blogpost detailing the research I did as part of the URV program (Ensuring Privacy at Edge Nodes in a Network)."
     },
     {
         "date":"[2023-07-04]",
         "short":"<a href=\"https://s3gfault.dev/blog/picoctf\">picoctf</a> published",
         "long":"Published <a href=\"https://s3gfault.dev/blog/picoctf\">picoctf</a>, a short blogpost on starting basic CTF challenges on PicoCTF."
-    },
-    {
-        "date":"[2023-09-26]",
-        "short":"the big site revamp :tm:",
-        "long":"Revamped the site!"
     },
     {
         "date":"[2023-09-26]",
@@ -73,16 +68,6 @@
         "date":"[2024-04-25]",
         "short":"awarded CICS Certificate of Recognition in Student Leadership Award",
         "long": "I was awarded a Certificate of Recognition in Student Leadership Award for my role in the CICS student organizations HackUMass and Cybersecurity Club."
-    },
-    {
-        "date": "[2024-04-29]",
-        "short": "added badges! <a href=\"https://github.com/jlcai/jlcai.github.io/blob/main/images/sitebutton3.png?raw=true\">(add me to ur site!)</a>",
-        "long": "Added badges to the main page. <a href=\"https://github.com/jlcai/jlcai.github.io/blob/main/images/sitebutton3.png?raw=true\">Add me to your site!</a>"
-    },
-    {
-        "date": "[2024-04-29]",
-        "short": "added <a href=\"https://s3gfault.dev/about\">about.html</a> page",
-        "long": "Added an <a href=\"https://s3gfault.dev/about\">about page</a>."
     },
     {
         "date": "[2024-05-16]",

@@ -18,7 +18,7 @@ body {
 }
 
 .tg {
-    background:rgb(84, 119, 104);
+    background:rgb(64, 95, 81);
     border-spacing: 2px;
     width: 100%;
 }
@@ -75,12 +75,14 @@ section img {
 }
 
 
-ul, ol {
+nav ul, ol {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-li {
+
+
+nav li {
 	margin-left: 1rem;
 }
 
@@ -112,8 +114,8 @@ main {
 }
 
 .faq a {
-    color: rgb(191, 228, 212);
-    font-weight: bold;
+    /* color: rgb(191, 228, 212); */
+    /* font-weight: bold; */
 }
 
 .faq a:hover {
