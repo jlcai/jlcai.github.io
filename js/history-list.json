@@ -66,7 +66,7 @@
     },
     {
         "date":"[2024-04-25]",
-        "short":"awarded CICS Certificate of Recognition in Student Leadership Award",
+        "short":"awarded CICS Certificate of Recognition in Student Leadership",
         "long": "I was awarded a Certificate of Recognition in Student Leadership Award for my role in the CICS student organizations HackUMass and Cybersecurity Club."
     },
     {
@@ -83,5 +83,10 @@
         "date": "[2024-05-31]",
         "short": "<a href=\"https://s3gfault.dev/blog/wikiwebwalker\">wikiwebwalker</a> published",
         "long":"Published <a href=\"https://s3gfault.dev/blog/wikiwebwalker\">wikiwebwalker</a>, a blogpost on my CS 485: Applications of NLP final group project where we beat The Wiki Game utilizing network science and natural language processing."
+    },
+    {
+        "date": "[2024-09-03]",
+        "short": "started grad school!",
+        "long": "I started as a masters student (in computer science) at UMass Amherst!"
     }
 ]
