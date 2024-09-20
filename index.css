@@ -68,7 +68,7 @@ li:before {
 .parent {
   display: grid;
   grid-template-columns: 20% auto ;
-  grid-template-rows: auto 40vh;
+  grid-template-rows: auto 42vh;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
@@ -193,6 +193,7 @@ li:before {
     border-right: 3px solid;
     font-family: monospace;
     font-size: x-large;
+    
   }
 
   #typing-demo-4 {
@@ -222,9 +223,11 @@ li:before {
   opacity: 0;
   animation: reveal 1s ease-in-out forwards;
   animation-delay: 0.8s;
+  padding-top: 20px;
   
   li {
     padding-left: 30px;
+    padding-bottom: 3px;
   }
 
   li:nth-child(1) {
@@ -267,7 +270,7 @@ li:before {
   opacity: 0;
   animation: reveal 1s ease-in-out forwards;
   animation-delay: 0.8s;
-  padding-top: 10px;
+  padding-top: 20px;
   font-size: 95%;
   padding-right: 20px;
 

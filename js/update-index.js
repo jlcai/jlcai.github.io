@@ -2,8 +2,12 @@ let preview_list = document.getElementById("list_preview");
 
 const blog_button = document.getElementById("blog_button")
 const project_button = document.getElementById("project_button");
-const research_button = document.getElementById("research_button");
+// const research_button = document.getElementById("research_button");
 const history_button = document.getElementById("history_button");
+const rowlet_button = document.getElementById("rowlet_button");
+
+// TYPING ANIAMTION THING
+let typingtext = document.getElementById("typing-demo-3");
 
 // BLOG BUTTON
 blog_button.addEventListener('click', e => {
@@ -29,7 +33,26 @@ project_button.addEventListener('click', e => {
     typingtext.innerHTML = `cd ~/projects && ls -t`;
     typingtext.style.width = "22ch";
 
-    preview_list.innerHTML = `<li>dont look im not done yet</li>`
+    // preview_list.innerHTML = `<li>dont look im not done yet</li>`
+    fetch('js/project-list.json').then(res => res.json()).then(x => {
+        let items = "";
+        if (x.length <= 5) {
+            items = x.reverse().map(item => `<li><span style="color: #80baa1;">${item.title}</span>: ${item.description}</li><br>`).join('');
+        }
+        else {
+            items = x.slice(-5).reverse().map(item => `<li><span style="color: #80baa1;">${item.title}</span>: ${item.description}</li><br>`).join('');
+        }
+        items += `<li><a href="https://s3gfault.dev/projects/archive" style="text-decoration: none">...(more)</a></li>`;
+        preview_list.innerHTML = `${items}`; 
+    }).catch(err => console.error('Error:', err));
+});
+
+// // RESEARCH UPDATING
+// research_button.addEventListener('click', e => {
+//     typingtext.innerHTML = `cd ~/research && ls -t`;
+//     typingtext.style.width = "22ch";
+
+//     preview_list.innerHTML = `<li>dont look im not done yet</li>`
     // fetch('js/project-list.json').then(res => res.json()).then(x => {
     //     let items = "";
     //     if (x.length <= 5) {
@@ -41,26 +64,7 @@ project_button.addEventListener('click', e => {
     //     items += `<li><a href="https://s3gfault.dev/projects/archive" style="text-decoration: none">...(more)</a></li>`;
     //     preview_list.innerHTML = `${items}`; 
     // }).catch(err => console.error('Error:', err));
-});
-
-// // PROJECT UPDATING
-research_button.addEventListener('click', e => {
-    typingtext.innerHTML = `cd ~/research && ls -t`;
-    typingtext.style.width = "22ch";
-
-    preview_list.innerHTML = `<li>dont look im not done yet</li>`
-    // fetch('js/project-list.json').then(res => res.json()).then(x => {
-    //     let items = "";
-    //     if (x.length <= 5) {
-    //         items = x.reverse().map(item => `<li><a href="${item.url}">${item.title}</a></li><br>`).join('');
-    //     }
-    //     else {
-    //         items = x.slice(-5).reverse().map(item => `<li><a href="${item.url}">${item.title}</a></li><br>`).join('');
-    //     }
-    //     items += `<li><a href="https://s3gfault.dev/projects/archive" style="text-decoration: none">...(more)</a></li>`;
-    //     preview_list.innerHTML = `${items}`; 
-    // }).catch(err => console.error('Error:', err));
-});
+// });
 
 // HISTORY LIST
 let history_default = e => {
@@ -86,5 +90,9 @@ window.addEventListener("load", function() {
     history_default();
 });
 
-// TYPING ANIAMTION THING
-let typingtext = document.getElementById("typing-demo-3");
+// ROWLET BUTTON :)
+rowlet_button.addEventListener('click', e => {
+    typingtext.innerHTML = `xdg-open rowlet_spin.gif`;
+    typingtext.style.width = "24ch";
+    preview_list.innerHTML = `<img src="../images/rowlet_spin.gif">`;
+});

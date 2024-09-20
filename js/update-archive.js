@@ -7,11 +7,13 @@ if (document.getElementById("blog-list")) {
     }).catch(err => console.error('Error:', err));
 }
 
-if (document.getElementById("list_preview")) {
-    const preview_list = document.getElementById("list_preview");
+
+// HISTORY UPDATING
+if (document.getElementById("history-list")) {
+    const history_list = document.getElementById("history-list");
     fetch('../js/history-list.json').then(res => res.json()).then(x => {
-        let items = x.reverse().map(item => `<li style="li:before { content: '<b>${item.date}</b>'; padding-right: 7px; }; margin-top:20px; "> <b>${item.date}</b> ${item.long}</li>`).join('');
-        preview_list.innerHTML = `${items}`; 
+        let items = x.reverse().map(item => `<li><b>${item.date}</b> ${item.long}</li><br>`).join('');
+        history_list.innerHTML = `${items}`; 
     }).catch(err => console.error('Error:', err));
 }
 
@@ -52,7 +54,48 @@ if (document.getElementById("list_preview")) {
 if (document.getElementById("projects-list")) {
     const projects_list = document.getElementById("projects-list");
     fetch('../js/project-list.json').then(res => res.json()).then(x => {
-        let items = x.reverse().map(item => `<li><a href="${item.url}">${item.title}</a> ${item.description}</li>`).join('');
+        projects_list.innerHTML = "";
+
+        let items = x.reverse().map(item => {
+            
+            if (Object.keys(item.links) === 0) {
+                return `<div class='box'><b>${item.title}</b><div class='caption'><i>${item.tools}</i></div>${item.description}</div>`;
+            } else {
+                let linkstr = "";
+                
+                for (let k in item.links) {
+                    linkstr += `<a href=${item.links[k]}>${k}</a> `;
+                }
+
+                return `<div class='box'><b>${item.title}</b><div class='caption'><i>${item.tools}</i></div>${item.description}<br><br>${linkstr}</div>`;
+            }
+            
+        }).join('');
         projects_list.innerHTML = `${items}`; 
+    }).catch(err => console.error('Error:', err));
+}
+
+// RESEARCH UPDATING
+if (document.getElementById("research-list")) {
+    const research_list = document.getElementById("research-list");
+    fetch('../js/project-list.json').then(res => res.json()).then(x => {
+        research_list.innerHTML = "";
+
+        let items = x.reverse().map(item => {
+            
+            if (Object.keys(item.links) === 0) {
+                return `<div class='box'><b>${item.title}</b><div class='caption'><i>${item.tools}</i></div>${item.description}</div>`;
+            } else {
+                let linkstr = "";
+                
+                for (let k in item.links) {
+                    linkstr += `<a href=${item.links[k]}>${k}</a> `;
+                }
+
+                return `<div class='box'><b>${item.title}</b><div class='caption'><i>${item.tools}</i></div>${item.description}<br><br>${linkstr}</div>`;
+            }
+            
+        }).join('');
+        research_list.innerHTML = `${items}`; 
     }).catch(err => console.error('Error:', err));
 }

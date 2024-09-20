@@ -1,8 +1,26 @@
 [
     {
-        "title": "umify",
-        "description": "CS326 group final: quirky Spotify w/ friends list & geolocation data (MongoDB, Spotify API)",
-        "url": "https://github.com/jvelazquez4/umify",
-        "pinned": false
+        "title": "[PROJECT] UMIFY",
+        "tools": "HTML/CSS/JS, Spotify API, MongoDB",
+        "description": "COMPSCI 326 (Web Programming) group final project. Created a 'quirky' version of Spotify with user login/auth, friends lists, and geolocational data. ('UMIFY' = 'UMass Amherst' + 'Spotify').",
+        "links": {"CODE": "https://github.com/jvelazquez4/umify"}
+    },
+    {
+        "title": "[RESEARCH] Enabling Trust in ML Models on Untrusted Edges",
+        "tools": "Python (keras, numpy), differential privacy, long-short term (LSTM) models, split learning",
+        "description": "Worked alongside PhD mentor in Winter 2022-2023. Proposed a long short-term split (LSTM-SPLIT) machine learning model to help obfuscate private data sent between client-server models on untrustworthy edge nodes.",
+        "links": {"BLOGPOST": "https://s3gfault.dev/blog/urv"}
+    },
+    {
+        "title": "[PROJECT] Cybersecurity CTF (Capture-The-Flag) Training Platform",
+        "tools": "HTML/CSS/JS, Svelte, MongoDB, AWS S3, Docker",
+        "description": "COMPSCI 426 (Scalable Web Systems) final project. Developed a cybersecurity Capture-The-Flag (CTF) training platform dedicated to enhancing cybersecurity education and fundamental skills within the industry.",
+        "links": {}
+    },
+    {
+        "title": "[PROJECT] wikiwebwalker",
+        "tools": "Python (numpy, scikit-learn, sentence_transformers)",
+        "description": "COMPSCI 485 (Applications of Natural Language Processing) group final project. Created a semantic similarity & network science solution to solve The Wiki Game. Utilizes DistilBERT and cosine similarity as heuristics for an A* search problem to navigate Wikipedia inner links.",
+        "links": {"BLOGPOST": "https://s3gfault.dev/blog/wikiwebwalker", "FORMAL PAPER": "https://s3gfault.dev/files/485_Final_Project_wikiwebwalker.pdf"}
     }
 ]
