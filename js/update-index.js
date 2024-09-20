@@ -35,7 +35,7 @@ blog_button.addEventListener('click', e => {
 
         let items = "";
         
-        let count = 7;
+        let count = 8;
         if (x.length <= count) { // only view up to 5 most recent blog posts
             items = x.reverse().map(item => `<li>${item.date} <a href="${item.url}">${item.title}:</a> ${item.description}</li><br>`).join('');
         }
@@ -100,7 +100,7 @@ let history_default = e => {
         typingtext.style.width = "21ch";
 
         let items = "";
-        let count = 6;
+        let count = 7;
         if (x.length <= count) {
             items = x.reverse().map(item => `<li>${item.date} ${item.long}</li><br>`).join('');
         }
