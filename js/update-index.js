@@ -9,23 +9,23 @@ const rowlet_button = document.getElementById("rowlet_button");
 // TYPING ANIAMTION THING
 let typingtext = document.getElementById("typing-demo-3");
 
-function checkOverflow(el)
-{
-   let curOverflow = divpreview.style.overflow;
-   var isOverflowing = 0
+// function checkOverflow(el)
+// {
+//    let curOverflow = divpreview.style.overflow;
+//    var isOverflowing = 0
 
-   if ( !curOverflow || curOverflow === "visible" )
-    divpreview.style.overflow = "hidden";
+//    if ( !curOverflow || curOverflow === "visible" )
+//     divpreview.style.overflow = "hidden";
 
-   if (el.style.height > divpreview.style.height) {
-    var isOverflowing = 1;
-   }
+//    if (el.style.height > divpreview.style.height) {
+//     var isOverflowing = 1;
+//    }
 
-   divpreview.style.overflow = curOverflow;
+//    divpreview.style.overflow = curOverflow;
 
-   console.log(isOverflowing);
-   return isOverflowing;
-}
+//    console.log(isOverflowing);
+//    return isOverflowing;
+// }
 
 // BLOG BUTTON
 blog_button.addEventListener('click', e => {
@@ -46,10 +46,10 @@ blog_button.addEventListener('click', e => {
         
         preview_list.innerHTML = `${items}`;
 
-        if (checkOverflow(preview_list)) {
-            items = x.slice(-2).reverse().map(item => `<li>${item.date} <a href="${item.url}">${item.title}:</a> ${item.description}</li><br>`).join('');
-            preview_list.innerHTML = `${items}`;
-        }
+        // if (checkOverflow(preview_list)) {
+        //     items = x.slice(-2).reverse().map(item => `<li>${item.date} <a href="${item.url}">${item.title}:</a> ${item.description}</li><br>`).join('');
+        //     preview_list.innerHTML = `${items}`;
+        // }
         
         
     }).catch(err => console.error('Error:', err));
