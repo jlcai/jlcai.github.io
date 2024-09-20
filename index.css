@@ -8,6 +8,7 @@ body {
   margin-bottom: 5vh;
   color: white;
   font-size: 105%;
+  
 }
 
 a:link, a:visited {
@@ -32,6 +33,9 @@ button {
   font-size: 105%;
   text-decoration: none;
   cursor: pointer;
+  white-space: normal;
+  word-wrap: break-all;
+
 }
 
 button:hover {
@@ -67,7 +71,7 @@ li:before {
 
 .parent {
   display: grid;
-  grid-template-columns: 20% auto ;
+  grid-template-columns: 22% auto ;
   grid-template-rows: auto 42vh;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -88,15 +92,15 @@ li:before {
   border-left: 2px dashed rgb(78, 129, 107);
 }
 
-.divpreview { 
+#divpreview { 
   grid-area: auto / 2 / 3 / 4; 
   border-right: 2px dashed rgb(78, 129, 107); 
   padding-top: 30px; 
   padding-left: 30px; 
   border-bottom: 2px dashed rgb(78, 129, 107); 
   padding-bottom: 30px;
+  overflow: auto;
 }
-
 
 /* .parent {
   display: grid;
@@ -273,6 +277,7 @@ li:before {
   padding-top: 20px;
   font-size: 95%;
   padding-right: 20px;
+  overflow: auto;
 
   li:nth-child(1) {
     animation-delay: 0.50s;

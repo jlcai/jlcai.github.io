@@ -1,5 +1,5 @@
 let preview_list = document.getElementById("list_preview");
-
+let divpreview = document.getElementsByClassName("divpreview");
 const blog_button = document.getElementById("blog_button")
 const project_button = document.getElementById("project_button");
 // const research_button = document.getElementById("research_button");
@@ -9,6 +9,24 @@ const rowlet_button = document.getElementById("rowlet_button");
 // TYPING ANIAMTION THING
 let typingtext = document.getElementById("typing-demo-3");
 
+function checkOverflow(el)
+{
+   let curOverflow = divpreview.style.overflow;
+   var isOverflowing = 0
+
+   if ( !curOverflow || curOverflow === "visible" )
+    divpreview.style.overflow = "hidden";
+
+   if (el.style.height > divpreview.style.height) {
+    var isOverflowing = 1;
+   }
+
+   divpreview.style.overflow = curOverflow;
+
+   console.log(isOverflowing);
+   return isOverflowing;
+}
+
 // BLOG BUTTON
 blog_button.addEventListener('click', e => {
     fetch('js/blog-list.json').then(res => res.json()).then(x => {
@@ -16,6 +34,7 @@ blog_button.addEventListener('click', e => {
         typingtext.style.width = "18ch";
 
         let items = "";
+        
         let count = 7;
         if (x.length <= count) { // only view up to 5 most recent blog posts
             items = x.reverse().map(item => `<li>${item.date} <a href="${item.url}">${item.title}:</a> ${item.description}</li><br>`).join('');
@@ -24,7 +43,15 @@ blog_button.addEventListener('click', e => {
             items = x.slice(-count).reverse().map(item => `<li>${item.date} <a href="${item.url}">${item.title}:</a> ${item.description}</li><br>`).join('');
         }
         items += `<li><a href="https://s3gfault.dev/blog/archive" style="text-decoration: none">...(more)</a></li>`;
+        
         preview_list.innerHTML = `${items}`;
+
+        if (checkOverflow(preview_list)) {
+            items = x.slice(-2).reverse().map(item => `<li>${item.date} <a href="${item.url}">${item.title}:</a> ${item.description}</li><br>`).join('');
+            preview_list.innerHTML = `${items}`;
+        }
+        
+        
     }).catch(err => console.error('Error:', err));
 });
 
