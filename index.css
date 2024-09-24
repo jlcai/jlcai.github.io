@@ -60,7 +60,7 @@ li:before {
 }
 
 #intro {
-  width: 65%;
+  width: 65vw;
   color: white;
   position: relative;
 }
@@ -71,7 +71,7 @@ li:before {
 
 .parent {
   display: grid;
-  grid-template-columns: 22% auto ;
+  grid-template-columns: 22vh auto ;
   grid-template-rows: auto 42vh;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -259,15 +259,6 @@ li:before {
 #direct a:hover {
   text-decoration: none;
   font-weight: bolder;
-}
-
-
-.badges {
-  opacity: 0;
-  animation: reveal 1s ease-in-out forwards;
-  animation-delay: 1.2s;
-  padding-top: 10px;
-  font-size: 13.5px;
 }
 
 #list_preview {
