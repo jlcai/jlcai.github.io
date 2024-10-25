@@ -65,7 +65,21 @@ project_button.addEventListener('click', e => {
     fetch('js/project-list.json').then(res => res.json()).then(x => {
         let items = "";
         if (x.length <= 5) {
-            items = x.reverse().map(item => `<li><span style="color: #80baa1;">${item.title}</span>: ${item.description}</li><br>`).join('');
+            items = x.reverse().map(item => {
+                let tmpfunc = function (obj) {
+                    return Object.keys(obj).map(function (key) {
+                        return obj[key];
+                    });
+                }
+                    // item.links.map(e => [item.links[e]])[0];
+                let tmp = tmpfunc(item.links);
+                console.log(tmp);
+                if (tmp.length != 0) {
+                    return `<li><a href="${tmp[0]}">${item.title}</a>: ${item.description}</li><br>`;
+                } else {
+                    return `<li><span style="color: #80baa1;">${item.title}</span>: ${item.description}</li><br>`;
+                }
+            }).join('');
         }
         else {
             items = x.slice(-5).reverse().map(item => `<li><span style="color: #80baa1;">${item.title}</span>: ${item.description}</li><br>`).join('');

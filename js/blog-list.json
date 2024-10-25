@@ -9,7 +9,7 @@
     {
         "title": "urv",
         "date": "[2023-06-26]",
-        "description": "CICS URV program",
+        "description": "CICS URV program, exploring how to maintain privacy at untrusted edges",
         "url": "https://s3gfault.dev/blog/urv",
         "tags": ["UMass Amherst", "education"]
     },
@@ -51,7 +51,7 @@
     {
         "title": "++2023;",
         "date": "[2023-12-26]",
-        "description": "2023 reflection & what to do next",
+        "description": "2023 reflection and what to do next",
         "url": "https://s3gfault.dev/blog/hello-2024",
         "tags": []
     },
