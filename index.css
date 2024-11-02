@@ -1,3 +1,7 @@
+* {
+  /* animation-play-state: paused !important; */
+}
+
 body {
   display: flex;
   background-color: rgb(56, 63, 60);
@@ -8,7 +12,6 @@ body {
   margin-bottom: 5vh;
   color: white;
   font-size: 105%;
-  
 }
 
 a:link, a:visited {
@@ -24,6 +27,12 @@ a {
     margin-bottom: 0;
 }
 
+.reduce_motion {
+  animation: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+}
+
 button {
   background: none!important;
   border: none;
@@ -35,7 +44,6 @@ button {
   cursor: pointer;
   white-space: normal;
   word-wrap: break-all;
-
 }
 
 button:hover {
