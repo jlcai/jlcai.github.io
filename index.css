@@ -71,31 +71,35 @@ li:before {
 
 .parent {
   display: grid;
-  grid-template-columns: 22vh auto ;
+  grid-template-columns: auto 1fr ;
   grid-template-rows: auto 42vh;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
   
 .divmain { 
-  grid-area: 1 / 1 / 2 / 4; 
+  /* grid-area: 1 / 1 / 2 / 4;  */
+  grid-column: 1 / -1;
   border-bottom: 2px dashed rgb(78, 129, 107);
   padding-bottom: 0px; 
 }
 
 .divls { 
-  grid-area: auto / auto / auto / auto; 
+  /* grid-area: auto / auto / auto / auto;  */
   border-right: 2px dashed rgb(78, 129, 107); 
   padding-top: 30px; 
+  padding-right: 30px;
+  width: fit-content;
   
   border-bottom: 2px dashed rgb(78, 129, 107); 
   border-left: 2px dashed rgb(78, 129, 107);
 }
 
-#divpreview { 
-  grid-area: auto / 2 / 3 / 4; 
+.divpreview { 
+  /* grid-area: auto / auto / auto / 4; */
   border-right: 2px dashed rgb(78, 129, 107); 
   padding-top: 30px; 
+  /* width: fit-content; */
   padding-left: 30px; 
   border-bottom: 2px dashed rgb(78, 129, 107); 
   padding-bottom: 30px;
