@@ -54,8 +54,7 @@ blog_button.addEventListener('click', e => {
         typingtext.style.width = "18ch";
 
         let items = "";
-        
-        let count = 8;
+        let count = 10;
         if (x.length <= count) { // only view up to 5 most recent blog posts
             items = x.reverse().map(item => `<li>${item.date} <a href="${item.url}">${item.title}:</a> ${item.description}</li><br>`).join('');
         }
@@ -72,13 +71,6 @@ blog_button.addEventListener('click', e => {
                 x.classList.add('reduce_motion');
             });
         }
-
-        // if (checkOverflow(preview_list)) {
-        //     items = x.slice(-2).reverse().map(item => `<li>${item.date} <a href="${item.url}">${item.title}:</a> ${item.description}</li><br>`).join('');
-        //     preview_list.innerHTML = `${items}`;
-        // }
-        
-        
     }).catch(err => console.error('Error:', err));
 });
 
@@ -90,7 +82,8 @@ project_button.addEventListener('click', e => {
     // preview_list.innerHTML = `<li>dont look im not done yet</li>`
     fetch('js/project-list.json').then(res => res.json()).then(x => {
         let items = "";
-        if (x.length <= 5) {
+        let count = 7;
+        if (x.length <= count) {
             items = x.reverse().map(item => {
                 let tmpfunc = function (obj) {
                     return Object.keys(obj).map(function (key) {
@@ -108,7 +101,7 @@ project_button.addEventListener('click', e => {
             }).join('');
         }
         else {
-            items = x.slice(-5).reverse().map(item => `<li><span style="color: #80baa1;">${item.title}</span>: ${item.description}</li><br>`).join('');
+            items = x.slice(-count).reverse().map(item => `<li><span style="color: #80baa1;">${item.title}</span>: ${item.description}</li><br>`).join('');
         }
 
         items += `<li><a href="https://s3gfault.dev/projects/archive" style="text-decoration: none">...(more)</a></li>`;
@@ -122,25 +115,6 @@ project_button.addEventListener('click', e => {
         }
     }).catch(err => console.error('Error:', err));
 });
-
-// // RESEARCH UPDATING
-// research_button.addEventListener('click', e => {
-//     typingtext.innerHTML = `cd ~/research && ls -t`;
-//     typingtext.style.width = "22ch";
-
-//     preview_list.innerHTML = `<li>dont look im not done yet</li>`
-    // fetch('js/project-list.json').then(res => res.json()).then(x => {
-    //     let items = "";
-    //     if (x.length <= 5) {
-    //         items = x.reverse().map(item => `<li><a href="${item.url}">${item.title}</a></li><br>`).join('');
-    //     }
-    //     else {
-    //         items = x.slice(-5).reverse().map(item => `<li><a href="${item.url}">${item.title}</a></li><br>`).join('');
-    //     }
-    //     items += `<li><a href="https://s3gfault.dev/projects/archive" style="text-decoration: none">...(more)</a></li>`;
-    //     preview_list.innerHTML = `${items}`; 
-    // }).catch(err => console.error('Error:', err));
-// });
 
 // HISTORY LIST
 let history_default = e => {

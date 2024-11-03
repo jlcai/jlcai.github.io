@@ -6,6 +6,12 @@
         "links": {"CODE": "https://github.com/jvelazquez4/umify"}
     },
     {
+        "title": "[RESEARCH] WannaCry Research",
+        "tools": "Ghidra",
+        "description": "COMPSCI 390R (Reverse Engineering and Vulnerability Analysis) group final project. Researched into ransomware, poking through the codebase of the infamous ransomware WannaCry to understand the inner mechanisms of it.",
+        "links": {"REPO": "https://github.com/jlcai/390r-final-project"}
+    },
+    {
         "title": "[RESEARCH] Enabling Trust in ML Models on Untrusted Edges",
         "tools": "Python (keras, numpy), differential privacy, long-short term (LSTM) models, split learning",
         "description": "Worked alongside PhD mentor in Winter 2022-2023. Proposed a long short-term split (LSTM-SPLIT) machine learning model to help obfuscate private data sent between client-server models on untrustworthy edge nodes.",
@@ -22,5 +28,11 @@
         "tools": "Python (numpy, scikit-learn, sentence_transformers)",
         "description": "COMPSCI 485 (Applications of Natural Language Processing) group final project. Created a semantic similarity & network science solution to solve The Wiki Game. Utilizes DistilBERT and cosine similarity as heuristics for an A* search problem to navigate Wikipedia inner links.",
         "links": {"BLOGPOST": "https://s3gfault.dev/blog/wikiwebwalker", "FORMAL PAPER": "https://s3gfault.dev/files/485_Final_Project_wikiwebwalker.pdf"}
+    },
+    {
+        "title": "[PROJECT] File System (But Better!)",
+        "tools": "Python, operational transformation, ...",
+        "description": "COMPSCI 532 (Systems for Data Science) group final project -- WORK IN PROGRESS. Working on making a better file system with automatic conflict resolution (using operational transformation methods) and crash protection measures for users sharing files.",
+        "links": {}
     }
 ]
