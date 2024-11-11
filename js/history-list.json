@@ -88,5 +88,10 @@
         "date": "[2024-09-03]",
         "short": "started grad school!",
         "long": "I started my Masters in Computer Science at UMass Amherst!"
+    },
+    {
+        "date": "[2024-11-10]",
+        "short": "judged <a href='https://hackumass-xii.devpost.com/'>HackUMass XII!</a>",
+        "long": "I was a judge for <a href='https://hackumass-xii.devpost.com/'>HackUMass XII</a> this weekend!"
     }
 ]
