@@ -399,7 +399,7 @@ li, h3 {
   }
 }
 
-.crt::before {
+/* .crt::before {
   content: " ";
   display: block;
   position: fixed;
@@ -452,5 +452,4 @@ li, h3 {
   opacity: 0;
   z-index: 2;
   pointer-events: none;
-  /* animation: flicker 0.15s infinite; */
-}
+} */

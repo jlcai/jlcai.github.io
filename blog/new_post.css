@@ -102,7 +102,7 @@ blockquote {
 	text-align: right; 
 }
 
-.crt::before {
+/* .crt::before {
     content: " ";
     display: block;
     position: fixed;
@@ -155,5 +155,4 @@ blockquote {
     opacity: 0;
     z-index: 2;
     pointer-events: none;
-    /* animation: flicker 0.15s infinite; */
-  }
+  } */
